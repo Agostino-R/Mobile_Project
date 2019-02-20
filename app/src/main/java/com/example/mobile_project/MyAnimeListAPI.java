@@ -1,4 +1,4 @@
-package com.example.mobile_project.View;
+package com.example.mobile_project;
 
 import com.example.mobile_project.Model.Api_Struct_Resp;
 
