@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 public class Anime
 {
     @SerializedName("mal_id")
-    private int id;
+    private int mal_id;
 
     @SerializedName("rank")
     private int rank;
@@ -37,8 +37,8 @@ public class Anime
     @SerializedName("score")
     private float score;
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId(int mal_id) {
+        this.mal_id = mal_id;
     }
 
     public void setRank(int rank) {
@@ -82,7 +82,7 @@ public class Anime
     }
 
     public int getId() {
-        return id;
+        return mal_id;
     }
 
     public int getRank() {
