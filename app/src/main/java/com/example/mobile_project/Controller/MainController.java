@@ -43,9 +43,12 @@ public class MainController
         call.enqueue(new Callback<Api_Struct_Resp>() {
             @Override
             public void onResponse(Call<Api_Struct_Resp> call, Response<Api_Struct_Resp> response) {
-                Api_Struct_Resp api_Struct_Resp = response.body();
-                List<Anime> listAnime = api_Struct_Resp.getResults();
-                view.showList(listAnime);
+                if(response.isSuccessful()) {
+                    Api_Struct_Resp api_Struct_Resp = response.body();
+                    Log.i("############ main", "resp " + api_Struct_Resp.getResults());
+                    List<Anime> listAnime = api_Struct_Resp.getResults();
+                    view.showList(listAnime);
+                }
             }
 
             @Override

@@ -4,10 +4,10 @@ import java.util.List;
 
 public class Api_Struct_Resp
 {
-    String request_hash;
-    Boolean request_cached;
-    int request_cache_expiry;
-    List<Anime> results;
+    private String request_hash;
+    private Boolean request_cached;
+    private int request_cache_expiry;
+    private List<Anime> results;
 
 
     public void setRequest_hash(String request_hash) {

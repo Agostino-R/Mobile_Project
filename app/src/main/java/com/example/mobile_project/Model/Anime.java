@@ -1,17 +1,40 @@
 package com.example.mobile_project.Model;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Anime
 {
+    @SerializedName("mal_id")
     private int id;
+
+    @SerializedName("rank")
     private int rank;
+
+    @SerializedName("title")
     private String title;
+
+    @SerializedName("url")
     private String url;
+
+    @SerializedName("image_url")
     private String image_url;
+
+    @SerializedName("type")
     private String type;
+
+    @SerializedName("episodes")
     private int episodes;
-    private String start;
-    private String end;
+
+    @SerializedName("start_date")
+    private String start_date;
+
+    @SerializedName("end_date")
+    private String end_date;
+
+    @SerializedName("members")
     private int members;
+
+    @SerializedName("score")
     private float score;
 
     public void setId(int id) {
@@ -43,11 +66,11 @@ public class Anime
     }
 
     public void setStart(String start) {
-        this.start = start;
+        this.start_date = start;
     }
 
     public void setEnd(String end) {
-        this.end = end;
+        this.end_date = end;
     }
 
     public void setMembers(int members) {
@@ -87,11 +110,11 @@ public class Anime
     }
 
     public String getStart() {
-        return start;
+        return start_date;
     }
 
     public String getEnd() {
-        return end;
+        return end_date;
     }
 
     public int getMembers() {

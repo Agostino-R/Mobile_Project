@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void showList(List<Anime> listAnime) {
+
         recyclerView.setHasFixedSize(true);
         // use a linear layout manager
         layoutManager = new LinearLayoutManager(this);
