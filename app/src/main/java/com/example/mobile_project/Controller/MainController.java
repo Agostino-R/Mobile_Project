@@ -32,7 +32,7 @@ public class MainController
                 .create();
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://api.jikan.moe/v3")
+                .baseUrl("https://api.jikan.moe/v3/top")
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
 
@@ -44,7 +44,7 @@ public class MainController
             @Override
             public void onResponse(Call<Api_Struct_Resp> call, Response<Api_Struct_Resp> response) {
                 Api_Struct_Resp api_Struct_Resp = response.body();
-                List<Anime> listAnime = api_Struct_Resp.getTest();
+                List<Anime> listAnime = api_Struct_Resp.getResults();
                 view.showList(listAnime);
             }
 

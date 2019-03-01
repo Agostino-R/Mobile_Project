@@ -10,6 +10,6 @@ import retrofit2.http.Query;
 
 public interface MyAnimeListAPI
 {
-    @GET("top/")
+    @GET("anime")
     Call<Api_Struct_Resp> getListAnime();
 }

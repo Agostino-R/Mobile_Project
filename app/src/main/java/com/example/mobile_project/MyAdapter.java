@@ -66,7 +66,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>
         final String name = currentAnime.getTitle();
         holder.txtHeader.setText(name);
 
-        holder.txtFooter.setText("Footer: " + name);
+        holder.txtFooter.setText("Rank: " + currentAnime.getRank());
     }
 
     // Return the size of your dataset (invoked by the layout manager)
