@@ -32,7 +32,7 @@ public class MainController
                 .create();
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://api.jikan.moe/v3/top")
+                .baseUrl("https://api.jikan.moe/v3/top/")
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
 
