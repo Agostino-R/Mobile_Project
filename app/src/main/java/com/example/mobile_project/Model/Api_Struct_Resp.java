@@ -9,7 +9,6 @@ public class Api_Struct_Resp
     private int request_cache_expiry;
     private List<Anime> results;
 
-
     public void setRequest_hash(String request_hash) {
         this.request_hash = request_hash;
     }
