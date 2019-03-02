@@ -6,10 +6,11 @@ import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface MyAnimeListAPI
 {
-    @GET("anime")
-    Call<Api_Struct_Resp> getListAnime();
+    @GET("top/{cat}")
+    Call<Api_Struct_Resp> getListAnime(@Path("cat") String cat);
 }

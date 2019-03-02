@@ -1,5 +1,7 @@
 package com.example.mobile_project.Model;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 
 public class Api_Struct_Resp
@@ -7,6 +9,8 @@ public class Api_Struct_Resp
     private String request_hash;
     private Boolean request_cached;
     private int request_cache_expiry;
+
+    @SerializedName("top")
     private List<Anime> results;
 
     public void setRequest_hash(String request_hash) {

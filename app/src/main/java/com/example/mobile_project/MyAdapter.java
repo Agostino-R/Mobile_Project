@@ -1,11 +1,15 @@
 package com.example.mobile_project;
 
 import com.example.mobile_project.Model.Anime;
+import com.squareup.picasso.Picasso;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
@@ -13,11 +17,13 @@ import java.util.List;
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>
 {
     private List<Anime> values;
+    DisplayMetrics metrics = new DisplayMetrics();
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         // each data item is just a string in this case
         public TextView txtHeader;
         public TextView txtFooter;
+        public ImageView loadedImage;
         public View layout;
 
         public ViewHolder(View v) {
@@ -25,6 +31,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>
             layout = v;
             txtHeader = (TextView) v.findViewById(R.id.firstLine);
             txtFooter = (TextView) v.findViewById(R.id.secondLine);
+            loadedImage = (ImageView) v.findViewById(R.id.anime_image);
         }
     }
 
@@ -52,6 +59,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>
                 parent.getContext());
         View v =
                 inflater.inflate(R.layout.row_layout, parent, false);
+        metrics = v.getResources().getDisplayMetrics();
         // set the view's size, margins, paddings and layout parameters
         ViewHolder vh = new ViewHolder(v);
         return vh;
@@ -65,7 +73,10 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>
         Anime currentAnime = values.get(position);
         final String name = currentAnime.getTitle();
         holder.txtHeader.setText(name);
-
+        Picasso.get()
+                .load(currentAnime.getImage_url())
+                .resize(110, 180)
+                .into(holder.loadedImage);
         holder.txtFooter.setText("Rank: " + currentAnime.getRank());
     }
 
