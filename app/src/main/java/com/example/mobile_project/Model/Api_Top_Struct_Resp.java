@@ -4,14 +4,14 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class Api_Struct_Resp
+public class Api_Top_Struct_Resp
 {
     private String request_hash;
     private Boolean request_cached;
     private int request_cache_expiry;
 
     @SerializedName("top")
-    private List<Anime> results;
+    private List<AnimeInTopList> results;
 
     public void setRequest_hash(String request_hash) {
         this.request_hash = request_hash;
@@ -25,7 +25,7 @@ public class Api_Struct_Resp
         this.request_cache_expiry = request_cache_expiry;
     }
 
-    public void setTest(List<Anime> results) {
+    public void setTest(List<AnimeInTopList> results) {
         this.results = results;
     }
 
@@ -41,7 +41,7 @@ public class Api_Struct_Resp
         return request_cache_expiry;
     }
 
-    public List<Anime> getResults() {
+    public List<AnimeInTopList> getResults() {
         return results;
     }
 }

@@ -4,36 +4,95 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:padding="3dp"
-        android:gravity="center"
-        android:lines="2"
-        android:fontFamily="serif"
-        android:textStyle="bold"
-        android:textSize="30dp"
-        android:textColor="@android:color/holo_blue_dark"
-        android:text="What's up \n       Anime?!"
+        android:layout_height="match_parent"
+        android:id="@+id/welcome_menu">
 
-        />
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/crossover"
-        android:layout_marginTop="200dp"
-        android:padding="5dp"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/launch_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="500dp"
-        android:background="@drawable/my_button"
-        android:text="             Show Me!             "
-        />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="100dp"
+                android:padding="3dp"
+                android:gravity="center"
+                android:lines="2"
+                android:fontFamily="serif"
+                android:textStyle="bold"
+                android:textSize="30dp"
+                android:textColor="@android:color/holo_blue_dark"
+                android:text="What's up \n       Anime?!"
+
+                />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/crossover"
+                android:layout_marginTop="200dp"
+                android:padding="5dp"/>
+
+            <Button
+                android:id="@+id/launch_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="500dp"
+                android:background="@drawable/my_button"
+                android:text="             Show Me!             "
+                />
+
+            <Button
+                android:id="@+id/top_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="800dp"
+                android:layout_marginHorizontal="3dp"
+                android:background="@android:color/holo_blue_dark"
+                android:text="Top Anime"
+                />
+
+            <Button
+                android:id="@+id/season_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="850dp"
+                android:layout_marginHorizontal="3dp"
+                android:background="@android:color/holo_blue_dark"
+                android:text="Season Anime"
+                />
+
+            <Button
+                android:id="@+id/schedule_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="900dp"
+                android:layout_marginHorizontal="3dp"
+                android:background="@android:color/holo_blue_dark"
+                android:text="Schedule"
+                />
+
+            <Button
+                android:id="@+id/upcoming_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="950dp"
+                android:layout_marginHorizontal="3dp"
+                android:background="@android:color/holo_blue_dark"
+                android:text="Upcoming Anime"
+                />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/myanimelist"
+                android:layout_marginTop="1200dp"/>
+
+        </RelativeLayout>
+    </ScrollView>
 
 </RelativeLayout>

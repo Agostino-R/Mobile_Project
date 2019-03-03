@@ -1,15 +1,12 @@
 package com.example.mobile_project;
 
-import com.example.mobile_project.Model.Anime;
+import com.example.mobile_project.Model.AnimeInTopList;
 import com.example.mobile_project.View.Anime_Desc;
-import com.example.mobile_project.View.Main_Menu;
-import com.example.mobile_project.View.ShowAnimeList;
 import com.squareup.picasso.Picasso;
 
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
-import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,11 +18,10 @@ import java.util.List;
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>
 {
     public interface OnItemClickListener {
-        void onItemClick(Anime item);
+        void onItemClick(AnimeInTopList item);
     }
 
-    private List<Anime> values;
-    DisplayMetrics metrics = new DisplayMetrics();
+    private List<AnimeInTopList> values;
     private final OnItemClickListener listener;
     private Context context;
 
@@ -44,17 +40,18 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>
             loadedImage = (ImageView) v.findViewById(R.id.anime_image);
         }
 
-        public void bind(final Anime item, final OnItemClickListener listener) {
+        public void bind(final AnimeInTopList item, final OnItemClickListener listener) {
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override public void onClick(View v) {
                     Intent anime_desc_activity = new Intent(context, Anime_Desc.class);
+                    anime_desc_activity.putExtra("SelectedAnimeId", item.getId());
                     context.startActivity(anime_desc_activity);
                 }
             });
         }
     }
 
-    public void add(int position, Anime item) {
+    public void add(int position, AnimeInTopList item) {
         values.add(position, item);
         notifyItemInserted(position);
     }
@@ -65,7 +62,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public MyAdapter(List<Anime> myDataset, OnItemClickListener listener, Context context) {
+    public MyAdapter(List<AnimeInTopList> myDataset, OnItemClickListener listener, Context context) {
         values = myDataset;
         this.listener = listener;
         this.context = context;
@@ -80,7 +77,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>
                 parent.getContext());
         View v =
                 inflater.inflate(R.layout.item_layout, parent, false);
-        metrics = v.getResources().getDisplayMetrics();
         // set the view's size, margins, paddings and layout parameters
         ViewHolder vh = new ViewHolder(v);
         return vh;
@@ -91,16 +87,16 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>
     public void onBindViewHolder(ViewHolder holder, final int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
-        Anime currentAnime = values.get(position);
-        final String name = currentAnime.getTitle();
+        AnimeInTopList currentTopAnimeInTopListListStruct = values.get(position);
+        final String name = currentTopAnimeInTopListListStruct.getTitle();
         holder.bind(values.get(position), listener);
 
         holder.txtHeader.setText(name);
         Picasso.get()
-                .load(currentAnime.getImage_url())
+                .load(currentTopAnimeInTopListListStruct.getImage_url())
                 .resize(110, 180)
                 .into(holder.loadedImage);
-        holder.txtFooter.setText("Rank: " + currentAnime.getRank());
+        holder.txtFooter.setText("Rank: " + currentTopAnimeInTopListListStruct.getRank());
     }
 
     // Return the size of your dataset (invoked by the layout manager)

@@ -2,9 +2,9 @@ package com.example.mobile_project.Controller;
 
 import android.util.Log;
 
+import com.example.mobile_project.Model.Api_Top_Struct_Resp;
 import com.example.mobile_project.View.ShowAnimeList;
-import com.example.mobile_project.Model.Anime;
-import com.example.mobile_project.Model.Api_Struct_Resp;
+import com.example.mobile_project.Model.AnimeInTopList;
 import com.example.mobile_project.MyAnimeListAPI;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -26,35 +26,61 @@ public class MainController
         this.view = showAnimeList;
     }
 
+    Gson gson;
+    Retrofit retrofit;
+    MyAnimeListAPI restApi;
+
     public void onCreate() {
-        Gson gson = new GsonBuilder()
+        gson = new GsonBuilder()
                 .setLenient()
                 .create();
 
-        Retrofit retrofit = new Retrofit.Builder()
+        retrofit = new Retrofit.Builder()
                 .baseUrl("https://api.jikan.moe/v3/")
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
 
-        MyAnimeListAPI restApi = retrofit.create(MyAnimeListAPI.class);
+        restApi = retrofit.create(MyAnimeListAPI.class);
 
+    }
 
-        Call<Api_Struct_Resp> call = restApi.getListAnime("anime");
-        call.enqueue(new Callback<Api_Struct_Resp>() {
+    public void loadTopList(String param1, String param2)
+    {
+        Call<Api_Top_Struct_Resp> call = restApi.getListAnime(param1, param2);
+        call.enqueue(new Callback<Api_Top_Struct_Resp>() {
             @Override
-            public void onResponse(Call<Api_Struct_Resp> call, Response<Api_Struct_Resp> response) {
+            public void onResponse(Call<Api_Top_Struct_Resp> call, Response<Api_Top_Struct_Resp> response) {
                 if(response.isSuccessful()) {
-                    Api_Struct_Resp api_Struct_Resp = response.body();
-                    List<Anime> listAnime = api_Struct_Resp.getResults();
-                    view.showList(listAnime);
+                    Api_Top_Struct_Resp api_Top_Struct_Resp = response.body();
+                    List<AnimeInTopList> listAnimeInTopList = api_Top_Struct_Resp.getResults();
+                    view.showList(listAnimeInTopList);
                 }
             }
 
             @Override
-            public void onFailure(Call<Api_Struct_Resp> call, Throwable t) {
+            public void onFailure(Call<Api_Top_Struct_Resp> call, Throwable t) {
                 Log.d("ERROR", "Api Error");
             }
         });
-
     }
+
+    /*public void loadSeasList(String param1, String param2)
+    {
+        Call<Api_Top_Struct_Resp> call = restApi.getListAnime(param1, param2);
+        call.enqueue(new Callback<Api_Top_Struct_Resp>() {
+            @Override
+            public void onResponse(Call<Api_Top_Struct_Resp> call, Response<Api_Top_Struct_Resp> response) {
+                if(response.isSuccessful()) {
+                    Api_Top_Struct_Resp api_Struct_Resp = response.body();
+                    List<AnimeInTopList> listAnimeInTopList = api_Struct_Resp.getResults();
+                    view.showList(listAnimeInTopList);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Api_Top_Struct_Resp> call, Throwable t) {
+                Log.d("ERROR", "Api Error");
+            }
+        });
+    }*/
 }
