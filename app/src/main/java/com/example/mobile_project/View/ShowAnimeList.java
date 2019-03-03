@@ -41,7 +41,7 @@ public class ShowAnimeList extends AppCompatActivity {
         controller = new MainController(this);
         controller.onCreate();
 
-        /*switch (nat)
+        switch (nat)
         {
             case "top":     controller.loadTopList(param1, param2);
                             break;
@@ -53,7 +53,7 @@ public class ShowAnimeList extends AppCompatActivity {
                             break;
             default:        Log.i("Error Switch", "Invalid Nat");
                             break;
-        }*/
+        }
     }
 
     public void showList(List<AnimeInTopList> listTopAnimeInTopListListStruct) {
