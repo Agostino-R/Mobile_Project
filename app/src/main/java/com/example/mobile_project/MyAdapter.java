@@ -8,7 +8,6 @@ import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -58,7 +57,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>
         LayoutInflater inflater = LayoutInflater.from(
                 parent.getContext());
         View v =
-                inflater.inflate(R.layout.row_layout, parent, false);
+                inflater.inflate(R.layout.item_layout, parent, false);
         metrics = v.getResources().getDisplayMetrics();
         // set the view's size, margins, paddings and layout parameters
         ViewHolder vh = new ViewHolder(v);
