@@ -1,5 +1,6 @@
 package com.example.mobile_project.View;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
@@ -18,6 +19,8 @@ public class ShowAnimeList extends AppCompatActivity {
     private RecyclerView recyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
+    private MyAdapter.OnItemClickListener listener;
+    private Context context;
 
     private MainController controller;
 
@@ -25,6 +28,7 @@ public class ShowAnimeList extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.anime_list_view);
+        context = ShowAnimeList.this;
         recyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
         controller = new MainController(this);
         controller.onCreate();
@@ -38,7 +42,7 @@ public class ShowAnimeList extends AppCompatActivity {
         ((GridLayoutManager) layoutManager).setReverseLayout(false);
         recyclerView.setLayoutManager(layoutManager);
         // define an adapter
-        mAdapter = new MyAdapter(listAnime);
+        mAdapter = new MyAdapter(listAnime, listener, context);
         recyclerView.setAdapter(mAdapter);
     }
 }
