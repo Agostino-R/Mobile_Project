@@ -10,7 +10,8 @@ import android.util.Log;
 
 import com.example.mobile_project.Controller.MainController;
 import com.example.mobile_project.Model.AnimeInTopList;
-import com.example.mobile_project.MyAdapter;
+import com.example.mobile_project.Model.AnimeInUpcomingList;
+import com.example.mobile_project.TopAdapter;
 import com.example.mobile_project.R;
 
 import java.util.List;
@@ -19,7 +20,7 @@ public class ShowAnimeList extends AppCompatActivity {
     private RecyclerView recyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
-    private MyAdapter.OnItemClickListener listener;
+    private TopAdapter.OnItemClickListener listener;
     private Context context;
 
     private MainController controller;
@@ -56,7 +57,7 @@ public class ShowAnimeList extends AppCompatActivity {
         }
     }
 
-    public void showList(List<AnimeInTopList> listTopAnimeInTopListListStruct) {
+    public void showTopList(List<AnimeInTopList> RespAnimeInTopList) {
 
         recyclerView.setHasFixedSize(true);
         // use a linear layout manager
@@ -64,7 +65,12 @@ public class ShowAnimeList extends AppCompatActivity {
         ((GridLayoutManager) layoutManager).setReverseLayout(false);
         recyclerView.setLayoutManager(layoutManager);
         // define an adapter
-        mAdapter = new MyAdapter(listTopAnimeInTopListListStruct, listener, context);
+        mAdapter = new TopAdapter(RespAnimeInTopList, listener, context);
         recyclerView.setAdapter(mAdapter);
+    }
+
+    public void showUpcomList(List<AnimeInUpcomingList> RespAnimeInUpcomingList)
+    {
+
     }
 }

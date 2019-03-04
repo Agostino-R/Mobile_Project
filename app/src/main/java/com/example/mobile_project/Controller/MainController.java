@@ -48,14 +48,14 @@ public class MainController
 
     public void loadTopList(String param1, String param2)
     {
-        Call<Api_Top_Struct_Resp> call = restApi.getListAnime(param1, param2);
+        Call<Api_Top_Struct_Resp> call = restApi.getTopListAnime(param1, param2);
         call.enqueue(new Callback<Api_Top_Struct_Resp>() {
             @Override
             public void onResponse(Call<Api_Top_Struct_Resp> call, Response<Api_Top_Struct_Resp> response) {
                 if(response.isSuccessful()) {
                     Api_Top_Struct_Resp api_Top_Struct_Resp = response.body();
                     List<AnimeInTopList> listAnimeInTopList = api_Top_Struct_Resp.getResults();
-                    view.showList(listAnimeInTopList);
+                    view.showTopList(listAnimeInTopList);
                 }
             }
 
@@ -78,19 +78,19 @@ public class MainController
 
     public void loadUpcomList(String param1, String param2)
     {
-        Call<Api_Upcoming_Struct_Resp> call = restApi.getListAnime(param1, param2);
+        Call<Api_Upcoming_Struct_Resp> call = restApi.getUpcomListAnime(param1, param2);
         call.enqueue(new Callback<Api_Upcoming_Struct_Resp>() {
             @Override
             public void onResponse(Call<Api_Upcoming_Struct_Resp> call, Response<Api_Upcoming_Struct_Resp> response) {
                 if(response.isSuccessful()) {
                     Api_Upcoming_Struct_Resp api_Struct_Resp = response.body();
                     List<AnimeInUpcomingList> listAnimeInUpcomingList = api_Struct_Resp.getAnime();
-                    view.showList(listAnimeInUpcomingList);
+                    view.showUpcomList(listAnimeInUpcomingList);
                 }
             }
 
             @Override
-            public void onFailure(Call<Api_Top_Struct_Resp> call, Throwable t) {
+            public void onFailure(Call<Api_Upcoming_Struct_Resp> call, Throwable t) {
                 Log.d("ERROR", "Api Error");
             }
         });
