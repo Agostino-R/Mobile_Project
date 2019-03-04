@@ -9,8 +9,10 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
 import com.example.mobile_project.Controller.MainController;
+import com.example.mobile_project.Controller.SchedAdapter;
 import com.example.mobile_project.Controller.SeasAdapter;
 import com.example.mobile_project.Controller.UpcomAdapter;
+import com.example.mobile_project.Model.AnimeInSchedList;
 import com.example.mobile_project.Model.AnimeInSeasList;
 import com.example.mobile_project.Model.AnimeInTopList;
 import com.example.mobile_project.Model.AnimeInUpcomingList;
@@ -26,6 +28,7 @@ public class ShowAnimeList extends AppCompatActivity {
     private TopAdapter.OnItemClickListener listener_top;
     private UpcomAdapter.OnItemClickListener listener_upcom;
     private SeasAdapter.OnItemClickListener listener_seas;
+    private SchedAdapter.OnItemClickListener listener_sched;
     private Context context;
 
     private MainController controller;
@@ -83,6 +86,18 @@ public class ShowAnimeList extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
         // define an adapter
         mAdapter = new SeasAdapter(RespAnimeInSeasList, listener_seas, context);
+        recyclerView.setAdapter(mAdapter);
+    }
+
+    public void showSchedList(List<AnimeInSchedList> RespAnimeInSchedList)
+    {
+        recyclerView.setHasFixedSize(true);
+        // use a linear layout manager
+        layoutManager = new GridLayoutManager(this, 3, GridLayoutManager.VERTICAL, true);
+        ((GridLayoutManager) layoutManager).setReverseLayout(false);
+        recyclerView.setLayoutManager(layoutManager);
+        // define an adapter
+        mAdapter = new SchedAdapter(RespAnimeInSchedList, listener_sched, context);
         recyclerView.setAdapter(mAdapter);
     }
 

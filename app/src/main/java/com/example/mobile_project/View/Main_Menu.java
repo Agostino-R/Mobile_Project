@@ -67,8 +67,8 @@ public class Main_Menu extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent schL = new Intent(Main_Menu.this, ShowAnimeList.class);
-                schL.putExtra("GetParam1", "monday");
-                schL.putExtra("GetParam2", "");
+                schL.putExtra("GetParam1", "schedule");
+                schL.putExtra("GetParam2", "monday");
                 schL.putExtra("Nature", "sched");
                 startActivity(schL);
             }

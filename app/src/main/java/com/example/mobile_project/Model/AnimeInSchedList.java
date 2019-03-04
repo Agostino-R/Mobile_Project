@@ -18,8 +18,6 @@ public class AnimeInSchedList {
     @SerializedName("score")
     private float score;
 
-    @SerializedName(value="monday", alternate={"tuesday"})
-
 
     /*A faire plus tard
     @SerializedName("genres")

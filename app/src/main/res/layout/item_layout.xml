@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:layout_alignParentBottom="true"
-        android:text="12sp"
+        android:text=""
         android:textSize="12sp" />
 
 </RelativeLayout>

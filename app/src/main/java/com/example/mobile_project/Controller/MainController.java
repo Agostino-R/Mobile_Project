@@ -2,8 +2,10 @@ package com.example.mobile_project.Controller;
 
 import android.util.Log;
 
+import com.example.mobile_project.Model.AnimeInSchedList;
 import com.example.mobile_project.Model.AnimeInSeasList;
 import com.example.mobile_project.Model.AnimeInUpcomingList;
+import com.example.mobile_project.Model.Api_Sched_Struct_Resp;
 import com.example.mobile_project.Model.Api_Seas_Struct_Resp;
 import com.example.mobile_project.Model.Api_Top_Struct_Resp;
 import com.example.mobile_project.Model.Api_Upcoming_Struct_Resp;
@@ -89,7 +91,22 @@ public class MainController
 
     public void loadSchedList(String param1, String param2)
     {
+        Call<Api_Sched_Struct_Resp> call = restApi.getSchedListAnime(param1, param2);
+        call.enqueue(new Callback<Api_Sched_Struct_Resp>() {
+            @Override
+            public void onResponse(Call<Api_Sched_Struct_Resp> call, Response<Api_Sched_Struct_Resp> response) {
+                if(response.isSuccessful()) {
+                    Api_Sched_Struct_Resp api_Sched_Struct_Resp = response.body();
+                    List<AnimeInSchedList> listAnimeInSchedList = api_Sched_Struct_Resp.getAnimeL();
+                    view.showSchedList(listAnimeInSchedList);
+                }
+            }
 
+            @Override
+            public void onFailure(Call<Api_Sched_Struct_Resp> call, Throwable t) {
+                Log.d("ERROR", "Api Error");
+            }
+        });
     }
 
     public void loadUpcomList(String param1, String param2)

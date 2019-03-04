@@ -4,8 +4,8 @@ import com.google.gson.annotations.SerializedName;
 
 public class AnimeInTopList
 {
-    @SerializedName("mal_id")
-    private int mal_id;
+    @SerializedName("mal_id") //nom du truc dans ton fichier json (Icon Name et Description)
+    private int mal_id; //ici tu l'appelle comme tu veux osef
 
     @SerializedName("rank")
     private int rank;
