@@ -16,11 +16,5 @@ public class Anime_Desc extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.anime_desc);
 
-        test = (TextView) findViewById(R.id.test_id);
-        int anime_id;
-        Intent i = getIntent();
-        anime_id = (int)i.getSerializableExtra("SelectedAnimeId");
-        test.setText("ID : " + anime_id);
-
     }
 }

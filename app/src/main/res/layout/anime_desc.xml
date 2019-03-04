@@ -3,10 +3,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/test_id"/>
 
     <ImageView
         android:layout_width="150dp"
@@ -19,9 +15,10 @@
     <TextView
         android:id="@+id/title_desc"
         android:text="titletitletitletitletitletitletitletitletitletitle"
+        android:lines="1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20dp"
+        android:textSize="30dp"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"/>
@@ -31,15 +28,26 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/title_desc"
         android:layout_toRightOf="@+id/image_for_desc"
-        android:background="@android:color/darker_gray"
+        android:background="@drawable/first_zone_description"
         android:layout_marginTop="20dp"
         android:layout_marginHorizontal="5dp"
+
         >
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="kzjvoejveoj"/>
+            android:textSize="15dp"
+            android:id="@+id/note_field"
+            android:text="Note\n"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/note_field"
+            android:textSize="20dp"
+            android:text="8.88"
+            />
 
     </RelativeLayout>
 
