@@ -7,6 +7,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.mobile_project.Controller.MainController;
 import com.example.mobile_project.Controller.SchedAdapter;
@@ -30,25 +33,41 @@ public class ShowAnimeList extends AppCompatActivity {
     private SeasAdapter.OnItemClickListener listener_seas;
     private SchedAdapter.OnItemClickListener listener_sched;
     private Context context;
+    //private Button next_page;
+    //private Button prev_page;
+    private TextView page_numb;
+    //private int page = 1;
 
     private MainController controller;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.anime_list_view);
+        setContentView(R.layout.default_anime_list_view);
 
         context = ShowAnimeList.this;
         recyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
 
-        String param1, param2, nat;
+        page_numb = (TextView) findViewById(R.id.page_number);
+
         Intent i = getIntent();
-        param1 = (String) i.getSerializableExtra("GetParam1");
-        param2 = (String) i.getSerializableExtra("GetParam2");
-        nat = (String) i.getSerializableExtra("Nature");
+        final String param1 = (String) i.getSerializableExtra("GetParam1");
+        final String param2 = (String) i.getSerializableExtra("GetParam2");
+        String nat = (String) i.getSerializableExtra("Nature");
+
+        /*if(nat == "top")
+        {
+            setContentView(R.layout.anime_top_list_view);
+        }
+        else
+            setContentView(R.layout.default_anime_list_view);
+
+        this.next_page = (Button) findViewById(R.id.next_page_button);
+        this.prev_page = (Button) findViewById(R.id.prev_page_button);*/
 
         controller = new MainController(this);
         controller.onCreate();
+
 
         switch (nat)
         {
@@ -63,6 +82,32 @@ public class ShowAnimeList extends AppCompatActivity {
             default:        Log.i("Error Switch", "Invalid Nat");
                             break;
         }
+
+        /*this.prev_page.setEnabled(false);
+
+        if(this.page>=2)
+            this.prev_page.setEnabled(true);
+        else
+            this.prev_page.setEnabled(false);
+
+        this.next_page.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                page++;
+                page_numb.setText(Integer.toString(page));
+                controller.loadTopList(param1, param2, Integer.toString(page));
+            }
+        });
+
+        this.prev_page.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                page--;
+                page_numb.setText(Integer.toString(page));
+                controller.loadTopList(param1, param2, Integer.toString(page));
+            }
+        });*/
+
     }
 
     public void showTopList(List<AnimeInTopList> RespAnimeInTopList) {

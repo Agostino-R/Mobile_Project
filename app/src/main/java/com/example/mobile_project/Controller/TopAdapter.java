@@ -11,6 +11,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -28,10 +29,10 @@ public class TopAdapter extends RecyclerView.Adapter<TopAdapter.ViewHolder>
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         // each data item is just a string in this case
-        public TextView txtHeader;
-        public TextView txtFooter;
-        public ImageView loadedImage;
-        public View layout;
+        private TextView txtHeader;
+        private TextView txtFooter;
+        private ImageView loadedImage;
+        private View layout;
 
         public ViewHolder(View v) {
             super(v);
@@ -50,16 +51,6 @@ public class TopAdapter extends RecyclerView.Adapter<TopAdapter.ViewHolder>
                 }
             });
         }
-    }
-
-    public void add(int position, AnimeInTopList item) {
-        values.add(position, item);
-        notifyItemInserted(position);
-    }
-
-    public void remove(int position) {
-        values.remove(position);
-        notifyItemRemoved(position);
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
