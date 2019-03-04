@@ -2,12 +2,13 @@ package com.example.mobile_project.Controller;
 
 import android.util.Log;
 
+import com.example.mobile_project.Model.AnimeInSeasList;
 import com.example.mobile_project.Model.AnimeInUpcomingList;
+import com.example.mobile_project.Model.Api_Seas_Struct_Resp;
 import com.example.mobile_project.Model.Api_Top_Struct_Resp;
 import com.example.mobile_project.Model.Api_Upcoming_Struct_Resp;
 import com.example.mobile_project.View.ShowAnimeList;
 import com.example.mobile_project.Model.AnimeInTopList;
-import com.example.mobile_project.MyAnimeListAPI;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -68,7 +69,22 @@ public class MainController
 
     public void loadSeasList(String param1, String param2)
     {
+        Call<Api_Seas_Struct_Resp> call = restApi.getSeasListAnime("season", param1, param2);
+        call.enqueue(new Callback<Api_Seas_Struct_Resp>() {
+            @Override
+            public void onResponse(Call<Api_Seas_Struct_Resp> call, Response<Api_Seas_Struct_Resp> response) {
+                if(response.isSuccessful()) {
+                    Api_Seas_Struct_Resp api_Seas_Struct_Resp = response.body();
+                    List<AnimeInSeasList> listAnimeInSeasList = api_Seas_Struct_Resp.getAnime();
+                    view.showSeasList(listAnimeInSeasList);
+                }
+            }
 
+            @Override
+            public void onFailure(Call<Api_Seas_Struct_Resp> call, Throwable t) {
+                Log.d("ERROR", "Api Error");
+            }
+        });
     }
 
     public void loadSchedList(String param1, String param2)

@@ -1,8 +1,4 @@
-package com.example.mobile_project;
-
-import com.example.mobile_project.Model.AnimeInTopList;
-import com.example.mobile_project.View.Anime_Desc;
-import com.squareup.picasso.Picasso;
+package com.example.mobile_project.Controller;
 
 import android.content.Context;
 import android.content.Intent;
@@ -13,16 +9,21 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.mobile_project.Model.AnimeInSeasList;
+import com.example.mobile_project.Model.AnimeInTopList;
+import com.example.mobile_project.R;
+import com.example.mobile_project.View.Anime_Desc;
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
-public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>
-{
+public class SeasAdapter extends RecyclerView.Adapter<SeasAdapter.ViewHolder>{
     public interface OnItemClickListener {
-        void onItemClick(AnimeInTopList item);
+        void onItemClick(AnimeInSeasList item);
     }
 
-    private List<AnimeInTopList> values;
-    private final OnItemClickListener listener;
+    private List<AnimeInSeasList> values;
+    private final SeasAdapter.OnItemClickListener listener;
     private Context context;
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -40,18 +41,18 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>
             loadedImage = (ImageView) v.findViewById(R.id.anime_image);
         }
 
-        public void bind(final AnimeInTopList item, final OnItemClickListener listener) {
+        public void bind(final AnimeInSeasList item, final SeasAdapter.OnItemClickListener listener) {
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override public void onClick(View v) {
                     Intent anime_desc_activity = new Intent(context, Anime_Desc.class);
-                    anime_desc_activity.putExtra("SelectedAnimeId", item.getId());
+                    anime_desc_activity.putExtra("SelectedAnimeId", item.getMal_id());
                     context.startActivity(anime_desc_activity);
                 }
             });
         }
     }
 
-    public void add(int position, AnimeInTopList item) {
+    public void add(int position, AnimeInSeasList item) {
         values.add(position, item);
         notifyItemInserted(position);
     }
@@ -62,7 +63,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public MyAdapter(List<AnimeInTopList> myDataset, OnItemClickListener listener, Context context) {
+    public SeasAdapter(List<AnimeInSeasList> myDataset, SeasAdapter.OnItemClickListener listener, Context context) {
         values = myDataset;
         this.listener = listener;
         this.context = context;
@@ -70,33 +71,33 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>
 
     // Create new views (invoked by the layout manager)
     @Override
-    public MyAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
-                                                   int viewType) {
+    public SeasAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
+                                                    int viewType) {
         // create a new view
         LayoutInflater inflater = LayoutInflater.from(
                 parent.getContext());
         View v =
                 inflater.inflate(R.layout.item_layout, parent, false);
         // set the view's size, margins, paddings and layout parameters
-        ViewHolder vh = new ViewHolder(v);
+        SeasAdapter.ViewHolder vh = new SeasAdapter.ViewHolder(v);
         return vh;
     }
 
     // Replace the contents of a view (invoked by the layout manager)
     @Override
-    public void onBindViewHolder(ViewHolder holder, final int position) {
+    public void onBindViewHolder(SeasAdapter.ViewHolder holder, final int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
-        AnimeInTopList currentTopAnimeInTopListListStruct = values.get(position);
-        final String name = currentTopAnimeInTopListListStruct.getTitle();
+        AnimeInSeasList currentSeasAnimeInSeasListListStruct = values.get(position);
+        final String name = currentSeasAnimeInSeasListListStruct.getTitle();
         holder.bind(values.get(position), listener);
 
         holder.txtHeader.setText(name);
         Picasso.get()
-                .load(currentTopAnimeInTopListListStruct.getImage_url())
+                .load(currentSeasAnimeInSeasListListStruct.getImage_url())
                 .resize(110, 180)
                 .into(holder.loadedImage);
-        holder.txtFooter.setText("Rank: " + currentTopAnimeInTopListListStruct.getRank());
+        holder.txtFooter.setText("Score: " + currentSeasAnimeInSeasListListStruct.getScore());
     }
 
     // Return the size of your dataset (invoked by the layout manager)
