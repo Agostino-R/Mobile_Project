@@ -18,7 +18,9 @@
         </activity>
 
         <activity android:name=".View.ShowAnimeList"
-                  android:label="@string/app_name"/>
+                  android:label="@string/app_name"
+                  />
+
         <activity android:name=".View.Anime_Desc"
                   android:label="Mobile_Project" />
     </application>
