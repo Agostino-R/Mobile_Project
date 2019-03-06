@@ -24,7 +24,7 @@ import com.example.mobile_project.R;
 
 import java.util.List;
 
-public class ShowAnimeList extends AppCompatActivity {
+public class ShowAnimeListActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
@@ -32,46 +32,32 @@ public class ShowAnimeList extends AppCompatActivity {
     private UpcomAdapter.OnItemClickListener listener_upcom;
     private SeasAdapter.OnItemClickListener listener_seas;
     private SchedAdapter.OnItemClickListener listener_sched;
+    private TextView page_nb;
     private Context context;
-    //private Button next_page;
-    //private Button prev_page;
-    private TextView page_numb;
-    //private int page = 1;
-
+    private int page = 1;
+    private List<AnimeInTopList> mAnimeInTopLists;
     private MainController controller;
+    private String param1, param2, nat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.default_anime_list_view);
+        setContentView(R.layout.anime_list_view);
 
-        context = ShowAnimeList.this;
+        context = ShowAnimeListActivity.this;
         recyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
 
-        page_numb = (TextView) findViewById(R.id.page_number);
-
         Intent i = getIntent();
-        final String param1 = (String) i.getSerializableExtra("GetParam1");
-        final String param2 = (String) i.getSerializableExtra("GetParam2");
-        String nat = (String) i.getSerializableExtra("Nature");
-
-        /*if(nat == "top")
-        {
-            setContentView(R.layout.anime_top_list_view);
-        }
-        else
-            setContentView(R.layout.default_anime_list_view);
-
-        this.next_page = (Button) findViewById(R.id.next_page_button);
-        this.prev_page = (Button) findViewById(R.id.prev_page_button);*/
+        this.param1 = (String) i.getSerializableExtra("GetParam1");
+        this.param2 = (String) i.getSerializableExtra("GetParam2");
+        this.nat = (String) i.getSerializableExtra("Nature");
 
         controller = new MainController(this);
         controller.onCreate();
 
-
         switch (nat)
         {
-            case "top":     controller.loadTopList(param1, param2);
+            case "top":     controller.loadTopList(param1, param2, Integer.toString(this.page));
                             break;
             case "seas":    controller.loadSeasList(param1, param2);
                             break;
@@ -82,32 +68,20 @@ public class ShowAnimeList extends AppCompatActivity {
             default:        Log.i("Error Switch", "Invalid Nat");
                             break;
         }
+    }
 
-        /*this.prev_page.setEnabled(false);
+    public void setList(List<AnimeInTopList> mAnimeInTopList)
+    {
+        this.mAnimeInTopLists = mAnimeInTopList;
+    }
 
-        if(this.page>=2)
-            this.prev_page.setEnabled(true);
-        else
-            this.prev_page.setEnabled(false);
-
-        this.next_page.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                page++;
-                page_numb.setText(Integer.toString(page));
-                controller.loadTopList(param1, param2, Integer.toString(page));
-            }
-        });
-
-        this.prev_page.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                page--;
-                page_numb.setText(Integer.toString(page));
-                controller.loadTopList(param1, param2, Integer.toString(page));
-            }
-        });*/
-
+    public void addToList(List<AnimeInTopList> mAnimeInTopList)
+    {
+        for(AnimeInTopList curr : mAnimeInTopList)
+        {
+            this.mAnimeInTopLists.add(curr);
+        }
+        mAdapter.notifyItemInserted(this.mAnimeInTopLists.size() - 1);
     }
 
     public void showTopList(List<AnimeInTopList> RespAnimeInTopList) {
@@ -118,8 +92,28 @@ public class ShowAnimeList extends AppCompatActivity {
         ((GridLayoutManager) layoutManager).setReverseLayout(false);
         recyclerView.setLayoutManager(layoutManager);
         // define an adapter
-        mAdapter = new TopAdapter(RespAnimeInTopList, listener_top, context);
+        mAdapter = new TopAdapter(RespAnimeInTopList, getTopListener(),getScrollListener(), context);
         recyclerView.setAdapter(mAdapter);
+    }
+
+    private TopAdapter.OnItemClickListener getTopListener() {
+        return new TopAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(AnimeInTopList item) {
+                Intent anime_desc_activity = new Intent(context, AnimeDescActivity.class);
+                anime_desc_activity.putExtra("SelectedAnimeId", item.getId());
+                context.startActivity(anime_desc_activity);
+            }
+        };
+    }
+
+    private TopAdapter.OnBottomReachedListener getScrollListener() {
+        return new TopAdapter.OnBottomReachedListener() {
+            public void onBottomReached(int position) {
+                page++;
+                controller.getFollowingTopList(param1, param2, Integer.toString(page));
+            }
+        };
     }
 
     public void showSeasList(List<AnimeInSeasList> RespAnimeInSeasList)

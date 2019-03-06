@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import com.example.mobile_project.Model.AnimeInUpcomingList;
 import com.example.mobile_project.R;
-import com.example.mobile_project.View.Anime_Desc;
+import com.example.mobile_project.View.AnimeDescActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -41,7 +41,7 @@ public class UpcomAdapter extends RecyclerView.Adapter<UpcomAdapter.ViewHolder>{
         public void bind(final AnimeInUpcomingList item, final UpcomAdapter.OnItemClickListener listener) {
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override public void onClick(View v) {
-                    Intent anime_desc_activity = new Intent(context, Anime_Desc.class);
+                    Intent anime_desc_activity = new Intent(context, AnimeDescActivity.class);
                     anime_desc_activity.putExtra("SelectedAnimeId", item.getMal_id());
                     context.startActivity(anime_desc_activity);
                 }

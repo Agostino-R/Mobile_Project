@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import com.example.mobile_project.Model.AnimeInSchedList;
 import com.example.mobile_project.R;
-import com.example.mobile_project.View.Anime_Desc;
+import com.example.mobile_project.View.AnimeDescActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -43,7 +43,7 @@ public class SchedAdapter extends RecyclerView.Adapter<SchedAdapter.ViewHolder>{
         public void bind(final AnimeInSchedList item, final SchedAdapter.OnItemClickListener listener) {
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override public void onClick(View v) {
-                    Intent anime_desc_activity = new Intent(context, Anime_Desc.class);
+                    Intent anime_desc_activity = new Intent(context, AnimeDescActivity.class);
                     anime_desc_activity.putExtra("SelectedAnimeId", item.getMal_id());
                     context.startActivity(anime_desc_activity);
                 }

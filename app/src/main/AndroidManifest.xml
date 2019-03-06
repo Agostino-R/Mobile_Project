@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".View.Main_Menu">
+        <activity android:name=".View.MainMenuActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -17,11 +17,11 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".View.ShowAnimeList"
+        <activity android:name=".View.ShowAnimeListActivity"
                   android:label="@string/app_name"
                   />
 
-        <activity android:name=".View.Anime_Desc"
+        <activity android:name=".View.AnimeDescActivity"
                   android:label="Mobile_Project" />
     </application>
 

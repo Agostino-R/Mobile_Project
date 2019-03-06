@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.example.mobile_project.R;
 
-public class Anime_Desc extends AppCompatActivity {
+public class AnimeDescActivity extends AppCompatActivity {
     TextView test;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

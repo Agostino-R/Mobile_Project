@@ -10,9 +10,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.mobile_project.Model.AnimeInSeasList;
-import com.example.mobile_project.Model.AnimeInTopList;
 import com.example.mobile_project.R;
-import com.example.mobile_project.View.Anime_Desc;
+import com.example.mobile_project.View.AnimeDescActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -44,7 +43,7 @@ public class SeasAdapter extends RecyclerView.Adapter<SeasAdapter.ViewHolder>{
         public void bind(final AnimeInSeasList item, final SeasAdapter.OnItemClickListener listener) {
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override public void onClick(View v) {
-                    Intent anime_desc_activity = new Intent(context, Anime_Desc.class);
+                    Intent anime_desc_activity = new Intent(context, AnimeDescActivity.class);
                     anime_desc_activity.putExtra("SelectedAnimeId", item.getMal_id());
                     context.startActivity(anime_desc_activity);
                 }

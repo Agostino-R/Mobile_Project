@@ -9,7 +9,7 @@ import com.example.mobile_project.Model.Api_Sched_Struct_Resp;
 import com.example.mobile_project.Model.Api_Seas_Struct_Resp;
 import com.example.mobile_project.Model.Api_Top_Struct_Resp;
 import com.example.mobile_project.Model.Api_Upcoming_Struct_Resp;
-import com.example.mobile_project.View.ShowAnimeList;
+import com.example.mobile_project.View.ShowAnimeListActivity;
 import com.example.mobile_project.Model.AnimeInTopList;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -25,10 +25,10 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class MainController
 {
 
-    private ShowAnimeList view;
+    private ShowAnimeListActivity view;
 
-    public MainController(ShowAnimeList showAnimeList) {
-        this.view = showAnimeList;
+    public MainController(ShowAnimeListActivity showAnimeListActivity) {
+        this.view = showAnimeListActivity;
     }
 
     Gson gson;
@@ -49,16 +49,37 @@ public class MainController
 
     }
 
-    public void loadTopList(String param1, String param2)
+    public void loadTopList(String param1, String param2, String param3)
     {
-        Call<Api_Top_Struct_Resp> call = restApi.getTopListAnime(param1, param2);
+        Call<Api_Top_Struct_Resp> call = restApi.getTopListAnime(param1, param2, param3);
         call.enqueue(new Callback<Api_Top_Struct_Resp>() {
             @Override
             public void onResponse(Call<Api_Top_Struct_Resp> call, Response<Api_Top_Struct_Resp> response) {
                 if(response.isSuccessful()) {
                     Api_Top_Struct_Resp api_Top_Struct_Resp = response.body();
                     List<AnimeInTopList> listAnimeInTopList = api_Top_Struct_Resp.getResults();
+                    view.setList(listAnimeInTopList);
                     view.showTopList(listAnimeInTopList);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Api_Top_Struct_Resp> call, Throwable t) {
+                Log.d("ERROR", "Api Error");
+            }
+        });
+    }
+
+    public void getFollowingTopList(String param1, String param2, String param3)
+    {
+        Call<Api_Top_Struct_Resp> call = restApi.getTopListAnime(param1, param2, param3);
+        call.enqueue(new Callback<Api_Top_Struct_Resp>() {
+            @Override
+            public void onResponse(Call<Api_Top_Struct_Resp> call, Response<Api_Top_Struct_Resp> response) {
+                if(response.isSuccessful()) {
+                    Api_Top_Struct_Resp api_Top_Struct_Resp = response.body();
+                    List<AnimeInTopList> listAnimeInTopList = api_Top_Struct_Resp.getResults();
+                    view.addToList(listAnimeInTopList);
                 }
             }
 

@@ -2,7 +2,7 @@ package com.example.mobile_project.Controller;
 
 import com.example.mobile_project.Model.AnimeInTopList;
 import com.example.mobile_project.R;
-import com.example.mobile_project.View.Anime_Desc;
+import com.example.mobile_project.View.AnimeDescActivity;
 import com.squareup.picasso.Picasso;
 
 import android.content.Context;
@@ -11,7 +11,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -23,8 +22,20 @@ public class TopAdapter extends RecyclerView.Adapter<TopAdapter.ViewHolder>
         void onItemClick(AnimeInTopList item);
     }
 
+    public interface OnBottomReachedListener {
+
+        void onBottomReached(int position);
+    }
+
+    public void addItemsInList()
+    {
+
+    }
+
     private List<AnimeInTopList> values;
     private final OnItemClickListener listener;
+    private final OnBottomReachedListener scrollListener;
+    OnBottomReachedListener onBottomReachedListener;
     private Context context;
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -45,20 +56,21 @@ public class TopAdapter extends RecyclerView.Adapter<TopAdapter.ViewHolder>
         public void bind(final AnimeInTopList item, final OnItemClickListener listener) {
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override public void onClick(View v) {
-                    Intent anime_desc_activity = new Intent(context, Anime_Desc.class);
-                    anime_desc_activity.putExtra("SelectedAnimeId", item.getId());
-                    context.startActivity(anime_desc_activity);
+                   listener.onItemClick(item);
                 }
             });
         }
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public TopAdapter(List<AnimeInTopList> myDataset, OnItemClickListener listener, Context context) {
+    public TopAdapter(List<AnimeInTopList> myDataset, OnItemClickListener listener, OnBottomReachedListener scrollListener, Context context) {
         values = myDataset;
         this.listener = listener;
+        this.scrollListener = scrollListener;
         this.context = context;
     }
+
+
 
     // Create new views (invoked by the layout manager)
     @Override
@@ -82,6 +94,10 @@ public class TopAdapter extends RecyclerView.Adapter<TopAdapter.ViewHolder>
         AnimeInTopList currentTopAnimeInTopListListStruct = values.get(position);
         final String name = currentTopAnimeInTopListListStruct.getTitle();
         holder.bind(values.get(position), listener);
+
+        if (position == values.size() - 1){
+            this.scrollListener.onBottomReached(position);
+        }
 
         holder.txtHeader.setText(name);
         Picasso.get()
