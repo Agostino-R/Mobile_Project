@@ -48,6 +48,7 @@ public class Description_View_Controller{
             public void onResponse(Call<Api_Desc_Struct_Resp> call, Response<Api_Desc_Struct_Resp> response) {
                 if(response.isSuccessful()) {
                     Api_Desc_Struct_Resp api_Desc_Struct_Resp = response.body();
+                    view.showAnimeDesc(api_Desc_Struct_Resp);
                 }
             }
 
