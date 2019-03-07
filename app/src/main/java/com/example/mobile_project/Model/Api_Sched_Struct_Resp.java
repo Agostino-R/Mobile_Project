@@ -15,7 +15,7 @@ public class Api_Sched_Struct_Resp {
     @SerializedName("request_cache_expiry")
     private int request_cache_expiry;
 
-    @SerializedName(value="monday", alternate={"tuesday"})
+    @SerializedName(value="monday", alternate={"tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"})
     private List<AnimeInSchedList> animeL;
 
 

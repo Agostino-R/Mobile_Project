@@ -54,8 +54,8 @@ public class MainMenuActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent seasL = new Intent(MainMenuActivity.this, ShowAnimeListActivity.class);
-                seasL.putExtra("GetParam1", "2018");
-                seasL.putExtra("GetParam2", "winter");
+                seasL.putExtra("GetParam1", "");
+                seasL.putExtra("GetParam2", "");
                 seasL.putExtra("Nature", "seas");
                 startActivity(seasL);
             }
@@ -66,7 +66,7 @@ public class MainMenuActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent schL = new Intent(MainMenuActivity.this, ShowAnimeListActivity.class);
                 schL.putExtra("GetParam1", "schedule");
-                schL.putExtra("GetParam2", "monday");
+                schL.putExtra("GetParam2", "");
                 schL.putExtra("Nature", "sched");
                 startActivity(schL);
             }
