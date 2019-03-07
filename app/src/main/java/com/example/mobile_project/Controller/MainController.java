@@ -5,6 +5,7 @@ import android.util.Log;
 import com.example.mobile_project.Model.AnimeInSchedList;
 import com.example.mobile_project.Model.AnimeInSeasList;
 import com.example.mobile_project.Model.AnimeInUpcomingList;
+import com.example.mobile_project.Model.Api_Desc_Struct_Resp;
 import com.example.mobile_project.Model.Api_Sched_Struct_Resp;
 import com.example.mobile_project.Model.Api_Seas_Struct_Resp;
 import com.example.mobile_project.Model.Api_Top_Struct_Resp;
@@ -149,4 +150,5 @@ public class MainController
             }
         });
     }
+
 }
