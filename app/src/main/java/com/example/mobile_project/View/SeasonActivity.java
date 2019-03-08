@@ -2,31 +2,23 @@ package com.example.mobile_project.View;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 
-import com.example.mobile_project.Controller.MainController;
 import com.example.mobile_project.Controller.SeasAdapter;
 import com.example.mobile_project.Controller.SeasonController;
 import com.example.mobile_project.Model.AnimeInSeasList;
-import com.example.mobile_project.Model.Api_Seas_Struct_Resp;
 import com.example.mobile_project.R;
 
 import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class SeasonActivity extends AppCompatActivity {
     private SeasAdapter.OnItemClickListener listener_seas;
@@ -47,10 +39,13 @@ public class SeasonActivity extends AppCompatActivity {
         season = "winter";
         year = "2018";
 
+        recyclerView = (RecyclerView) findViewById(R.id.seas_recycler_view);
+
         seasonSpin = (Spinner) findViewById(R.id.seasonSelect);
         yearSelect = (EditText) findViewById(R.id.yearSelect);
         yearSelect.setText(year);
 
+        controller = new SeasonController(this);
         controller.onCreate();
         controller.loadSeasList(year, season);
 

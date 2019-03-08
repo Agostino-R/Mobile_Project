@@ -4,7 +4,6 @@ import android.util.Log;
 
 import com.example.mobile_project.Model.Api_Desc_Struct_Resp;
 import com.example.mobile_project.View.AnimeDescActivity;
-import com.example.mobile_project.View.ShowAnimeListActivity;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 

@@ -18,13 +18,25 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".View.ShowAnimeListActivity"
+        <activity android:name=".View.TopActivity"
             android:windowSoftInputMode="stateHidden"
                   android:label="@string/app_name"
                   />
 
         <activity android:name=".View.AnimeDescActivity"
                   android:label="Mobile_Project" />
+
+        <activity android:name=".View.SchedActivity"
+            android:label="Mobile_Project" />
+
+        <activity android:name=".View.SearchActivity"
+            android:label="Mobile_Project" />
+
+        <activity android:name=".View.SeasonActivity"
+            android:label="Mobile_Project" />
+
+        <activity android:name=".View.UpcomingActivity"
+            android:label="Mobile_Project" />
     </application>
 
 </manifest>

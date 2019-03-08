@@ -2,6 +2,7 @@ package com.example.mobile_project.Controller;
 
 import com.example.mobile_project.Model.Api_Desc_Struct_Resp;
 import com.example.mobile_project.Model.Api_Sched_Struct_Resp;
+import com.example.mobile_project.Model.Api_Search_Struct_Resp;
 import com.example.mobile_project.Model.Api_Seas_Struct_Resp;
 import com.example.mobile_project.Model.Api_Top_Struct_Resp;
 import com.example.mobile_project.Model.Api_Upcoming_Struct_Resp;
@@ -26,4 +27,8 @@ public interface MyAnimeListAPI
 
     @GET("{param_a}/{param_b}")
     Call<Api_Desc_Struct_Resp> getAnimeById(@Path("param_a") String pa, @Path("param_b") String pb);
+
+    @GET("{param_a}/{param_b}/{param_c}")
+    Call<Api_Search_Struct_Resp> getSearchListAnime(@Path("param_a") String pa, @Path("param_b") String pb, @Path("param_c") String pc);
+
 }
