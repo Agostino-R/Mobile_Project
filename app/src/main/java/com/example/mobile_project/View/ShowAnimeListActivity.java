@@ -17,10 +17,8 @@ import android.widget.Spinner;
 
 import com.example.mobile_project.Controller.MainController;
 import com.example.mobile_project.Controller.SchedAdapter;
-import com.example.mobile_project.Controller.SeasAdapter;
 import com.example.mobile_project.Controller.UpcomAdapter;
 import com.example.mobile_project.Model.AnimeInSchedList;
-import com.example.mobile_project.Model.AnimeInSeasList;
 import com.example.mobile_project.Model.AnimeInTopList;
 import com.example.mobile_project.Model.AnimeInUpcomingList;
 import com.example.mobile_project.Controller.TopAdapter;
@@ -34,15 +32,13 @@ public class ShowAnimeListActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager layoutManager;
     private TopAdapter.OnItemClickListener listener_top;
     private UpcomAdapter.OnItemClickListener listener_upcom;
-    private SeasAdapter.OnItemClickListener listener_seas;
     private SchedAdapter.OnItemClickListener listener_sched;
     private Context context;
     private int page = 1;
     private List<AnimeInTopList> mAnimeInTopLists;
     private MainController controller;
-    private String param1, param2, nat, day, season, year;
-    private Spinner daySpin, seasonSpin;
-    private EditText yearSelect;
+    private String param1, param2, nat, day;
+    private Spinner daySpin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,21 +46,13 @@ public class ShowAnimeListActivity extends AppCompatActivity {
         setContentView(R.layout.anime_list_view);
 
         day = "monday";
-        season = "winter";
-        year = "2018";
 
         context = ShowAnimeListActivity.this;
         recyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
 
         daySpin = (Spinner) findViewById(R.id.daySelect);
-        seasonSpin = (Spinner) findViewById(R.id.seasonSelect);
-        yearSelect = (EditText) findViewById(R.id.yearSelect);
-
-        yearSelect.setText(year);
 
         daySpin.setVisibility(View.GONE);
-        seasonSpin.setVisibility(View.GONE);
-        yearSelect.setVisibility(View.GONE);
 
         Intent i = getIntent();
         this.param1 = (String) i.getSerializableExtra("GetParam1");
@@ -77,10 +65,6 @@ public class ShowAnimeListActivity extends AppCompatActivity {
         switch (nat)
         {
             case "top":     controller.loadTopList(param1, param2, Integer.toString(this.page));
-                            break;
-            case "seas":    controller.loadSeasList(year, season);
-                            yearSelect.setVisibility(View.VISIBLE);
-                            seasonSpin.setVisibility(View.VISIBLE);
                             break;
             case "sched":   controller.loadSchedList(param1, day);
                             daySpin.setVisibility(View.VISIBLE);
@@ -106,37 +90,6 @@ public class ShowAnimeListActivity extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> parent) {
 
             }
-        });
-
-        ArrayAdapter<CharSequence> spinnAdapterS = ArrayAdapter.createFromResource(this,
-                R.array.seasons, android.R.layout.simple_spinner_item);
-        spinnAdapterS.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        seasonSpin.setAdapter(spinnAdapterS);
-        seasonSpin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                season = parent.getItemAtPosition(position).toString();
-                controller.loadSeasList(year, season.toLowerCase());
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-
-        yearSelect.addTextChangedListener(new TextWatcher() {
-
-            public void afterTextChanged(Editable s) {
-
-                year = s.toString();
-                controller.loadSeasList(year, season.toLowerCase());
-                yearSelect.requestFocus();
-            }
-
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-
-            public void onTextChanged(CharSequence s, int start, int before, int count) {}
         });
 
     }
@@ -184,18 +137,6 @@ public class ShowAnimeListActivity extends AppCompatActivity {
                 controller.getFollowingTopList(param1, param2, Integer.toString(page));
             }
         };
-    }
-
-    public void showSeasList(List<AnimeInSeasList> RespAnimeInSeasList)
-    {
-        recyclerView.setHasFixedSize(true);
-        // use a linear layout manager
-        layoutManager = new GridLayoutManager(this, 3, GridLayoutManager.VERTICAL, true);
-        ((GridLayoutManager) layoutManager).setReverseLayout(false);
-        recyclerView.setLayoutManager(layoutManager);
-        // define an adapter
-        mAdapter = new SeasAdapter(RespAnimeInSeasList, listener_seas, context);
-        recyclerView.setAdapter(mAdapter);
     }
 
     public void showSchedList(List<AnimeInSchedList> RespAnimeInSchedList)

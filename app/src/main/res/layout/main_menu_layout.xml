@@ -60,7 +60,8 @@
                 android:id="@+id/season_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="850dp"
+                android:layout_below="@id/top_button"
+                android:layout_marginTop="2dp"
                 android:layout_marginHorizontal="3dp"
                 android:background="@android:color/holo_blue_dark"
                 android:text="Season Anime"
@@ -70,7 +71,8 @@
                 android:id="@+id/schedule_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="900dp"
+                android:layout_below="@+id/season_button"
+                android:layout_marginTop="2dp"
                 android:layout_marginHorizontal="3dp"
                 android:background="@android:color/holo_blue_dark"
                 android:text="Schedule"
@@ -80,11 +82,22 @@
                 android:id="@+id/upcoming_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="950dp"
+                android:layout_below="@+id/schedule_button"
+                android:layout_marginTop="2dp"
                 android:layout_marginHorizontal="3dp"
                 android:background="@android:color/holo_blue_dark"
                 android:text="Upcoming Anime"
                 />
+
+            <Button
+                android:id="@+id/search_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/upcoming_button"
+                android:layout_marginTop="2dp"
+                android:layout_marginHorizontal="3dp"
+                android:background="@android:color/holo_blue_dark"
+                android:text="Search Anime"/>
 
             <ImageView
                 android:layout_width="wrap_content"

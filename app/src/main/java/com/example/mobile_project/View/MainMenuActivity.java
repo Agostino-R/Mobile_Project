@@ -14,13 +14,14 @@ public class MainMenuActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main_menu);
+        setContentView(R.layout.main_menu_layout);
 
         Button seasButton;
         Button topButton;
         Button upcomButton;
         Button schedButton;
         Button scrButton;
+        Button searchButton;
         final ScrollView mScrollView;
 
         scrButton = findViewById(R.id.launch_button);
@@ -28,6 +29,7 @@ public class MainMenuActivity extends AppCompatActivity {
         seasButton = findViewById(R.id.season_button);
         schedButton = findViewById(R.id.schedule_button);
         upcomButton = findViewById(R.id.upcoming_button);
+        searchButton = findViewById(R.id.search_button);
         mScrollView = findViewById(R.id.welcome_menu);
 
         scrButton.setEnabled(true);
@@ -50,17 +52,6 @@ public class MainMenuActivity extends AppCompatActivity {
             }
         });
 
-        seasButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent seasL = new Intent(MainMenuActivity.this, ShowAnimeListActivity.class);
-                seasL.putExtra("GetParam1", "");
-                seasL.putExtra("GetParam2", "");
-                seasL.putExtra("Nature", "seas");
-                startActivity(seasL);
-            }
-        });
-
         schedButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -79,6 +70,17 @@ public class MainMenuActivity extends AppCompatActivity {
                 upL.putExtra("GetParam1", "season");
                 upL.putExtra("GetParam2", "later");
                 upL.putExtra("Nature", "upcom");
+                startActivity(upL);
+            }
+        });
+
+        searchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent upL = new Intent(MainMenuActivity.this, ShowAnimeListActivity.class);
+                upL.putExtra("GetParam1", "search");
+                upL.putExtra("GetParam2", "anime");
+                upL.putExtra("Nature", "search");
                 startActivity(upL);
             }
         });
