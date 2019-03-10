@@ -91,14 +91,13 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
         AnimeInSearchList currentAnimeInSearchList = values.get(position);
-        final String name = currentAnimeInSearchList.getTitle();
         holder.bind(values.get(position), listener);
 
         if (position == values.size() - 1){
             this.scrollListener.onBottomReached(position);
         }
 
-        holder.txtHeader.setText(name);
+        holder.txtHeader.setText(currentAnimeInSearchList.getTitle());
         Picasso.get()
                 .load(currentAnimeInSearchList.getImage_url())
                 .resize(110, 180)

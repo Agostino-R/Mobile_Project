@@ -33,7 +33,7 @@ public class SchedActivity extends AppCompatActivity {
         setContentView(R.layout.schedule_layout);
 
         day = "monday";
-        context = SchedActivity.this;
+        this.context = this;
 
         recyclerView = (RecyclerView) findViewById(R.id.sched_recycler_view);
 

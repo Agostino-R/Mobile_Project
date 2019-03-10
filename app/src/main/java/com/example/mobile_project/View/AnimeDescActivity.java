@@ -21,6 +21,7 @@ public class AnimeDescActivity extends AppCompatActivity {
         Intent intent = getIntent();
         mal_id = (Integer)intent.getSerializableExtra("SelectedAnimeId");
 
+        controller = new Description_View_Controller(this);
         controller.onCreate();
         controller.loadAnimeDescription("anime", Integer.toString(mal_id));
 

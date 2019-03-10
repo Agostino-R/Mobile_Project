@@ -31,6 +31,8 @@ public class TopActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.top_recycler_view);
 
+        this.context = this;
+
         controller = new TopController(this);
         controller.onCreate();
 

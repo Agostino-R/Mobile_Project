@@ -27,11 +27,6 @@ public class TopAdapter extends RecyclerView.Adapter<TopAdapter.ViewHolder>
         void onBottomReached(int position);
     }
 
-    public void addItemsInList()
-    {
-
-    }
-
     private List<AnimeInTopList> values;
     private final OnItemClickListener listener;
     private final OnBottomReachedListener scrollListener;

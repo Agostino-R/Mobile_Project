@@ -43,13 +43,18 @@ public class SearchController {
     }
 
     public void loadSearchResults(String param1, String param2, String param3) {
-        Call<Api_Search_Struct_Resp> call = restApi.getSearchListAnime("season", param1, param2);
+        //Log.i("S Controller", "##########" +retrofit.baseUrl()+ param1 + "/" + param2 + param3);
+        Call<Api_Search_Struct_Resp> call = restApi.getSearchListAnime(param1+"/"+param2+param3);
+        //Log.i("S Call", "##########" + call);
         call.enqueue(new Callback<Api_Search_Struct_Resp>() {
             @Override
             public void onResponse(Call<Api_Search_Struct_Resp> call, Response<Api_Search_Struct_Resp> response) {
+                //Log.i("S Controller", "##########" + response.code());
                 if(response.isSuccessful()) {
                     Api_Search_Struct_Resp api_Search_Struct_Resp = response.body();
+                    //Log.i("S Controller", "##########" + api_Search_Struct_Resp);
                     List<AnimeInSearchList> listAnimeInSearchRes= api_Search_Struct_Resp.getResults();
+                    view.setList(listAnimeInSearchRes);
                     view.showSearchResults(listAnimeInSearchRes);
                 }
             }
@@ -64,14 +69,14 @@ public class SearchController {
 
     public void getFollowingSearchRes(String param1, String param2, String param3)
     {
-        Call<Api_Search_Struct_Resp> call = restApi.getSearchListAnime("season", param1, param2);
+        Call<Api_Search_Struct_Resp> call = restApi.getSearchListAnime(param1+"/"+param2+param3);
         call.enqueue(new Callback<Api_Search_Struct_Resp>() {
             @Override
             public void onResponse(Call<Api_Search_Struct_Resp> call, Response<Api_Search_Struct_Resp> response) {
                 if(response.isSuccessful()) {
                     Api_Search_Struct_Resp api_Search_Struct_Resp = response.body();
                     List<AnimeInSearchList> listAnimeInSearchRes= api_Search_Struct_Resp.getResults();
-                    view.showSearchResults(listAnimeInSearchRes);
+                    view.addToList(listAnimeInSearchRes);
                 }
             }
 

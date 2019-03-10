@@ -8,6 +8,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.widget.EditText;
 
 import com.example.mobile_project.Controller.SchedController;
@@ -28,8 +29,9 @@ public class SearchActivity extends AppCompatActivity {
     private SearchController controller;
     private SearchAdapter.OnItemClickListener listener_search;
     private EditText searchContent;
-    private List<AnimeInTopList> mAnimeInSearchLists;
+    private List<AnimeInSearchList> mAnimeInSearchLists;
     private int page=1;
+    private String search_field;
 
 
     @Override
@@ -37,19 +39,20 @@ public class SearchActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.search_layout);
 
-        recyclerView = (RecyclerView) findViewById(R.id.seas_recycler_view);
+        recyclerView = (RecyclerView) findViewById(R.id.search_recycler_view);
 
         searchContent = findViewById(R.id.search_content);
 
+        this.context = this;
+
         controller = new SearchController(this);
         controller.onCreate();
-        controller.loadSearchResults("a", "b", "c");
 
         searchContent.addTextChangedListener(new TextWatcher() {
 
             public void afterTextChanged(Editable s) {
 
-                controller.loadSearchResults("a", "b", "c");
+                controller.loadSearchResults("search", "anime", parseString(s.toString()));
                 searchContent.requestFocus();
             }
 
@@ -57,6 +60,16 @@ public class SearchActivity extends AppCompatActivity {
 
             public void onTextChanged(CharSequence s, int start, int before, int count) {}
         });
+    }
+
+    public String parseString(String s)
+    {
+        search_field = s;
+        String parsed=s;
+        parsed.replace(" ", "%20");
+        parsed = "?q=" + parsed + "&page=" + Integer.toString(page);
+        Log.i("Search ", "################################" + parsed);
+        return parsed;
     }
 
     public void showSearchResults(List<AnimeInSearchList> RespAnimeInSearchRes)
@@ -75,19 +88,19 @@ public class SearchActivity extends AppCompatActivity {
         return new SearchAdapter.OnBottomReachedListener() {
             public void onBottomReached(int position) {
                 page++;
-                controller.getFollowingSearchRes("top", "anime", Integer.toString(page));
+                controller.getFollowingSearchRes("search", "anime", parseString(search_field));
             }
         };
     }
 
-    public void setList(List<AnimeInTopList> mAnimeInTopList)
+    public void setList(List<AnimeInSearchList> mAnimeInSearchList)
     {
-        this.mAnimeInSearchLists = mAnimeInTopList;
+        this.mAnimeInSearchLists = mAnimeInSearchList;
     }
 
-    public void addToList(List<AnimeInTopList> mAnimeInTopList)
+    public void addToList(List<AnimeInSearchList> mAnimeInSearchList)
     {
-        for(AnimeInTopList curr : mAnimeInTopList)
+        for(AnimeInSearchList curr : mAnimeInSearchList)
         {
             this.mAnimeInSearchLists.add(curr);
         }

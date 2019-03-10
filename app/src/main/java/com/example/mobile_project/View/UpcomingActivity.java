@@ -24,6 +24,7 @@ public class UpcomingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.upcom_list_view);
+        this.context = this;
 
         recyclerView = (RecyclerView) findViewById(R.id.up_recycler_view);
 

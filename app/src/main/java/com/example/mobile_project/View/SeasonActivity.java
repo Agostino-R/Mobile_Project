@@ -35,6 +35,7 @@ public class SeasonActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.season_anime_layout);
+        this.context = this;
 
         season = "winter";
         year = "2018";
