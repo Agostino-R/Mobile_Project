@@ -1,6 +1,7 @@
 package com.example.mobile_project.View;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -80,8 +81,19 @@ public class SearchActivity extends AppCompatActivity {
         ((GridLayoutManager) layoutManager).setReverseLayout(false);
         recyclerView.setLayoutManager(layoutManager);
         // define an adapter
-        mAdapter = new SearchAdapter(RespAnimeInSearchRes, listener_search ,getScrollListener(), context);
+        mAdapter = new SearchAdapter(RespAnimeInSearchRes, getSearchListener() ,getScrollListener(), context);
         recyclerView.setAdapter(mAdapter);
+    }
+
+    private SearchAdapter.OnItemClickListener getSearchListener() {
+        return new SearchAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(AnimeInSearchList item) {
+                Intent anime_desc_activity = new Intent(context, AnimeDescActivity.class);
+                anime_desc_activity.putExtra("SelectedAnimeId", item.getMal_id());
+                context.startActivity(anime_desc_activity);
+            }
+        };
     }
 
     private SearchAdapter.OnBottomReachedListener getScrollListener() {

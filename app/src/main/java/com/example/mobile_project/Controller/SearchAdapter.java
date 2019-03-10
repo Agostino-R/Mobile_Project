@@ -17,6 +17,7 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder> {
+
     public interface OnItemClickListener {
         void onItemClick(AnimeInSearchList item);
     }
@@ -24,11 +25,6 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder
     public interface OnBottomReachedListener {
 
         void onBottomReached(int position);
-    }
-
-    public void addItemsInList()
-    {
-
     }
 
     private List<AnimeInSearchList> values;
