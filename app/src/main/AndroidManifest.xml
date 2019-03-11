@@ -37,6 +37,9 @@
 
         <activity android:name=".View.UpcomingActivity"
             android:label="Mobile_Project" />
+
+        <activity android:name=".View.ToWatchActivity"
+            android:label="Mobile_Project" />
     </application>
 
 </manifest>

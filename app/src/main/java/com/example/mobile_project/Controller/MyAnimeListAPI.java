@@ -1,5 +1,6 @@
 package com.example.mobile_project.Controller;
 
+import com.example.mobile_project.Model.AnimeInToWatchList;
 import com.example.mobile_project.Model.Api_Desc_Struct_Resp;
 import com.example.mobile_project.Model.Api_Sched_Struct_Resp;
 import com.example.mobile_project.Model.Api_Search_Struct_Resp;
@@ -31,5 +32,8 @@ public interface MyAnimeListAPI
 
     @GET()
     Call<Api_Search_Struct_Resp> getSearchListAnime(@Url String theUrl);
+
+    @GET("{param_a}/{param_b}")
+    Call<AnimeInToWatchList> getToWatchAnimeById(@Path("param_a") String pa, @Path("param_b") String pb);
 
 }

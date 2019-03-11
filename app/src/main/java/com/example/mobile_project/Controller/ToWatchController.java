@@ -1,11 +1,12 @@
 package com.example.mobile_project.Controller;
 
-
 import android.util.Log;
 
 import com.example.mobile_project.Model.AnimeInSeasList;
-import com.example.mobile_project.Model.Api_Seas_Struct_Resp;
+import com.example.mobile_project.Model.AnimeInToWatchList;
+import com.example.mobile_project.View.AnimeDescActivity;
 import com.example.mobile_project.View.SeasonActivity;
+import com.example.mobile_project.View.ToWatchActivity;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -17,11 +18,11 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class SeasonController {
-    private SeasonActivity view;
+public class ToWatchController {
+    private ToWatchActivity view;
 
-    public SeasonController(SeasonActivity seasonActivity) {
-        this.view = seasonActivity;
+    public ToWatchController(ToWatchActivity toWatchActivity) {
+        this.view = toWatchActivity;
     }
 
     Gson gson;
@@ -42,23 +43,25 @@ public class SeasonController {
 
     }
 
-    public void loadSeasList(String param1, String param2)
+    public void loadToWatchAnime(String param1, final String param2)
     {
-        Call<Api_Seas_Struct_Resp> call = restApi.getSeasListAnime("season", param1, param2);
-        call.enqueue(new Callback<Api_Seas_Struct_Resp>() {
+        Call<AnimeInToWatchList> call = restApi.getToWatchAnimeById(param1, param2);
+        call.enqueue(new Callback<AnimeInToWatchList>() {
             @Override
-            public void onResponse(Call<Api_Seas_Struct_Resp> call, Response<Api_Seas_Struct_Resp> response) {
+            public void onResponse(Call<AnimeInToWatchList> call, Response<AnimeInToWatchList> response) {
                 if(response.isSuccessful()) {
-                    Api_Seas_Struct_Resp api_Seas_Struct_Resp = response.body();
-                    List<AnimeInSeasList> listAnimeInSeasList = api_Seas_Struct_Resp.getAnime();
-                    view.showSeasList(listAnimeInSeasList);
+                    AnimeInToWatchList animeInToWatchList = response.body();
+                    animeInToWatchList.setId(Integer.parseInt(param2));
+                    view.addToList(animeInToWatchList);
+                    view.showToWatchList();
                 }
             }
 
             @Override
-            public void onFailure(Call<Api_Seas_Struct_Resp> call, Throwable t) {
+            public void onFailure(Call<AnimeInToWatchList> call, Throwable t) {
                 Log.d("ERROR", "Api Error");
             }
         });
     }
 }
+
