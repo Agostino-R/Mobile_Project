@@ -23,13 +23,23 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"/>
 
+    <Button
+        android:id="@+id/addToToWatchList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/title_desc"
+        android:layout_toRightOf="@+id/image_for_desc"
+        android:background="@color/colorPrimary"
+        android:layout_margin="14dp"
+        android:text="+      Add To 'To Watch' List"/>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/title_desc"
         android:layout_toRightOf="@+id/image_for_desc"
         android:background="@drawable/first_zone_description"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="80dp"
         android:layout_marginHorizontal="5dp"
 
         >

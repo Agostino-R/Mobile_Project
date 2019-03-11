@@ -8,6 +8,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
+import android.widget.TextView;
 
 import com.example.mobile_project.Controller.ToWatchAdapter;
 import com.example.mobile_project.Controller.ToWatchController;
@@ -15,45 +17,51 @@ import com.example.mobile_project.Model.AnimeInToWatchList;
 import com.example.mobile_project.R;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 import java.util.Map;
 import java.util.Set;
 
 public class ToWatchActivity extends AppCompatActivity {
-    List<Integer> mal_Id_Anime_To_Watch;
-    ArrayList<AnimeInToWatchList> to_Watch_List;
+    private List<Integer> mal_Id_Anime_To_Watch;
+    private ArrayList<AnimeInToWatchList> to_Watch_List;
     private RecyclerView recyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
     private ToWatchAdapter.OnItemClickListener listener_watch;
-    Map<String, Integer> loadedValues;
-    SharedPreferences sharedPreferences;
-    ToWatchController controller;
-    Context context;
+    private Map<String, Integer> loadedValues;
+    private SharedPreferences sharedPreferences;
+    private ToWatchController controller;
+    private Context context;
+    private TextView text;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.context = this;
         setContentView(R.layout.to_watch_list_layout);
-        sharedPreferences = context.getSharedPreferences("user_prefs", Context.MODE_PRIVATE);
+        sharedPreferences = context.getSharedPreferences("user_to_watch_anime", Context.MODE_PRIVATE);
+        text = (TextView) findViewById(R.id.emptyListText);
+        text.setVisibility(View.INVISIBLE);
 
         recyclerView = (RecyclerView) findViewById(R.id.to_watch_recycler_view);
         mal_Id_Anime_To_Watch = new ArrayList<Integer>();
         to_Watch_List = new ArrayList<AnimeInToWatchList>();
-        if(sharedPreferences!=null)
-            loadListFromCache();
-        mal_Id_Anime_To_Watch.add(5114);
 
         controller = new ToWatchController(this);
         controller.onCreate();
 
-        for(int i : mal_Id_Anime_To_Watch)
+        loadListFromCache();
+        if(mal_Id_Anime_To_Watch.size()!=0) {
+            for(int i : mal_Id_Anime_To_Watch)
+            {
+                controller.loadToWatchAnime("anime", Integer.toString(i));
+            }
+        }
+        else
         {
-            controller.loadToWatchAnime("anime", Integer.toString(i));
+            text.setVisibility(View.VISIBLE);
+            text.setText("Your 'To Watch' list is empty!");
         }
     }
 
