@@ -38,13 +38,11 @@ public class AnimeDescActivity extends AppCompatActivity {
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sharedPreferences
-                        .edit()
-                        .putInt("ID", mal_id)
-                        .apply();
+                controller.addItemIntoList(mal_id);
             }
         });
     }
+
 
     public void showAnimeDesc(Api_Desc_Struct_Resp api_Desc_Struct_Resp)
     {

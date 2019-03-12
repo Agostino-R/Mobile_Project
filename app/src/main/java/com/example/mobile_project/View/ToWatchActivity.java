@@ -29,8 +29,8 @@ public class ToWatchActivity extends AppCompatActivity {
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
     private ToWatchAdapter.OnItemClickListener listener_watch;
-    private Map<String, Integer> loadedValues;
     private SharedPreferences sharedPreferences;
+    String jsonList;
     private ToWatchController controller;
     private Context context;
     private TextView text;
@@ -40,41 +40,32 @@ public class ToWatchActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         this.context = this;
         setContentView(R.layout.to_watch_list_layout);
-        sharedPreferences = context.getSharedPreferences("user_to_watch_anime", Context.MODE_PRIVATE);
+        sharedPreferences = context.getSharedPreferences("userList", Context.MODE_PRIVATE);
         text = (TextView) findViewById(R.id.emptyListText);
         text.setVisibility(View.INVISIBLE);
 
         recyclerView = (RecyclerView) findViewById(R.id.to_watch_recycler_view);
+
+        jsonList = sharedPreferences.getString("ID_List", null);
+
+        Log.i("jsonList ########### ", ""+jsonList);
+
         mal_Id_Anime_To_Watch = new ArrayList<Integer>();
         to_Watch_List = new ArrayList<AnimeInToWatchList>();
 
+        jsonList = sharedPreferences.getString("ID_List", null);
         controller = new ToWatchController(this);
         controller.onCreate();
-
-        loadListFromCache();
-        if(mal_Id_Anime_To_Watch.size()!=0) {
+        //controller.clearCache();
+        if(jsonList!=null)
+        {
+            mal_Id_Anime_To_Watch = controller.loadlist(jsonList);
             for(int i : mal_Id_Anime_To_Watch)
             {
                 controller.loadToWatchAnime("anime", Integer.toString(i));
             }
         }
-        else
-        {
-            text.setVisibility(View.VISIBLE);
-            text.setText("Your 'To Watch' list is empty!");
-        }
-    }
 
-    public void loadListFromCache()
-    {
-        loadedValues = (Map<String, Integer>) sharedPreferences.getAll();
-        Set key = loadedValues.keySet();
-        Iterator it = key.iterator();
-        while (it.hasNext()){
-            String cle = (String) it.next();
-            int id = (Integer) loadedValues.get(cle);
-            mal_Id_Anime_To_Watch.add(id);
-        }
     }
 
     public void addToList(AnimeInToWatchList animeInToWatchList)
