@@ -97,7 +97,7 @@ public class TopAdapter extends RecyclerView.Adapter<TopAdapter.ViewHolder>
         holder.txtHeader.setText(name);
         Picasso.get()
                 .load(currentTopAnimeInTopListListStruct.getImage_url())
-                .resize(110, 180)
+                .resize(120, 190)
                 .into(holder.loadedImage);
         holder.txtFooter.setText("Rank: " + currentTopAnimeInTopListListStruct.getRank());
     }

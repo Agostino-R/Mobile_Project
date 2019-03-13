@@ -3,6 +3,7 @@ package com.example.mobile_project.Controller;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
+import android.widget.Button;
 
 import com.example.mobile_project.Model.AnimeInToWatchList;
 import com.example.mobile_project.Model.Api_Desc_Struct_Resp;
@@ -25,6 +26,7 @@ public class Description_View_Controller{
     private String jsonList;
     private List<Integer> toWatchList;
     private SharedPreferences mSharedPreferences;
+    private Boolean isInWatchList;
 
         public Description_View_Controller(AnimeDescActivity animeDescActivity) {
             this.view = animeDescActivity;
@@ -45,10 +47,29 @@ public class Description_View_Controller{
                     .build();
 
             restApi = retrofit.create(MyAnimeListAPI.class);
-
             mSharedPreferences = view.getSharedPreferences("userList", Context.MODE_PRIVATE);
             jsonList = mSharedPreferences.getString("ID_List", null);
 
+
+            ArrayList<Double> malDoubleList;
+            if(toWatchList == null)
+            {
+                toWatchList = new ArrayList<>();
+            }
+
+            malDoubleList = gson.fromJson(jsonList, ArrayList.class);
+            if(malDoubleList!=null) {
+                for (double d : malDoubleList) {
+                    toWatchList.add((int) d);
+                }
+            }
+
+            int temp_id = view.getMal_id();
+
+            if(toWatchList.contains(temp_id))
+                isInWatchList = true;
+            else
+                isInWatchList = false;
         }
 
     public void loadAnimeDescription(String param1, String param2)
@@ -73,9 +94,8 @@ public class Description_View_Controller{
     public void addItemIntoList(int mal_id)
     {
         //On doit passer par une conversion car avec SharedPreferences on recupere une liste de double
+        mSharedPreferences = view.getSharedPreferences("userList", Context.MODE_PRIVATE);
         ArrayList<Double> malDoubleList;
-
-        jsonList = mSharedPreferences.getString("ID_List", null);
         if(toWatchList == null)
         {
             toWatchList = new ArrayList<>();
@@ -83,19 +103,48 @@ public class Description_View_Controller{
 
         malDoubleList = gson.fromJson(jsonList, ArrayList.class);
         if(malDoubleList!=null) {
+            toWatchList.clear();
             for (double d : malDoubleList) {
                 toWatchList.add((int) d);
             }
         }
         if(!toWatchList.contains(mal_id)) {
-            Log.i("DVC###############", "" + toWatchList);
             toWatchList.add(mal_id);
+            isInWatchList = true;
+            view.setButtonBehavior(isInWatchList);
             jsonList = gson.toJson(toWatchList);
-            Log.i("DVC###############", "" + jsonList);
             mSharedPreferences
                     .edit()
                     .putString("ID_List", jsonList)
                     .apply();
         }
+    }
+
+    public void removeItemFromList(int mal_id)
+    {
+        mSharedPreferences = view.getSharedPreferences("userList", Context.MODE_PRIVATE);
+        ArrayList<Double> malDoubleList;
+
+        malDoubleList = gson.fromJson(jsonList, ArrayList.class);
+        if(malDoubleList!=null) {
+            toWatchList.clear();
+            for (double d : malDoubleList) {
+                toWatchList.add((int) d);
+            }
+        }
+
+        toWatchList.remove(new Integer(mal_id));
+        isInWatchList = false;
+        view.setButtonBehavior(isInWatchList);
+        jsonList = gson.toJson(toWatchList);
+
+        mSharedPreferences
+                .edit()
+                .putString("ID_List", jsonList)
+                .apply();
+    }
+
+    public Boolean getIsInWatchList() {
+        return isInWatchList;
     }
 }

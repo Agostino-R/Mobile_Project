@@ -9,12 +9,10 @@
         android:layout_height="200dp"
         android:layout_margin="10dp"
         android:layout_below="@+id/title_desc"
-        android:id="@+id/image_for_desc"
-        android:src="@drawable/test_image_desc"/>
+        android:id="@+id/image_for_desc"/>
 
     <TextView
         android:id="@+id/title_desc"
-        android:text="titletitletitletitletitletitletitletitletitletitle"
         android:lines="1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -31,7 +29,7 @@
         android:layout_toRightOf="@+id/image_for_desc"
         android:background="@color/colorPrimary"
         android:layout_margin="14dp"
-        android:text="+      Add To 'To Watch' List"/>
+        android:text="+      Add"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -47,16 +45,16 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="15dp"
+            android:textSize="30dp"
             android:id="@+id/note_field"
-            android:text="Note\n"/>
+            android:text="Note:"/>
 
         <TextView
+            android:id="@+id/desc_note"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/note_field"
-            android:textSize="20dp"
-            android:text="8.88"
+            android:textSize="25dp"
             />
 
     </RelativeLayout>

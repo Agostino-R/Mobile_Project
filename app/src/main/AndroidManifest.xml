@@ -10,7 +10,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".View.MainMenuActivity">
+        <activity android:name=".View.MainMenuActivity"
+            android:screenOrientation="portrait">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -18,27 +20,40 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".View.TopActivity"
+        <activity
+            android:name=".View.TopActivity"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden"
-                  android:label="@string/app_name"
-                  />
+            android:label="@string/app_name" />
 
-        <activity android:name=".View.AnimeDescActivity"
-                  android:label="Mobile_Project" />
-
-        <activity android:name=".View.SchedActivity"
+        <activity
+            android:name=".View.AnimeDescActivity"
+            android:screenOrientation="portrait"
             android:label="Mobile_Project" />
 
-        <activity android:name=".View.SearchActivity"
+        <activity
+            android:name=".View.SchedActivity"
+            android:screenOrientation="portrait"
             android:label="Mobile_Project" />
 
-        <activity android:name=".View.SeasonActivity"
+        <activity
+            android:name=".View.SearchActivity"
+            android:screenOrientation="portrait"
             android:label="Mobile_Project" />
 
-        <activity android:name=".View.UpcomingActivity"
+        <activity
+            android:name=".View.SeasonActivity"
+            android:screenOrientation="portrait"
             android:label="Mobile_Project" />
 
-        <activity android:name=".View.ToWatchActivity"
+        <activity
+            android:name=".View.UpcomingActivity"
+            android:screenOrientation="portrait"
+            android:label="Mobile_Project" />
+
+        <activity
+            android:name=".View.ToWatchActivity"
+            android:screenOrientation="portrait"
             android:label="Mobile_Project" />
     </application>
 
