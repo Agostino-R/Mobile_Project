@@ -30,7 +30,7 @@ public class ToWatchActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager layoutManager;
     private ToWatchAdapter.OnItemClickListener listener_watch;
     private SharedPreferences sharedPreferences;
-    String jsonList;
+    private String jsonList;
     private ToWatchController controller;
     private Context context;
     private TextView text;
@@ -40,23 +40,30 @@ public class ToWatchActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         this.context = this;
         setContentView(R.layout.to_watch_list_layout);
-        sharedPreferences = context.getSharedPreferences("userList", Context.MODE_PRIVATE);
         text = (TextView) findViewById(R.id.emptyListText);
         text.setVisibility(View.INVISIBLE);
 
         recyclerView = (RecyclerView) findViewById(R.id.to_watch_recycler_view);
 
-        jsonList = sharedPreferences.getString("ID_List", null);
 
         Log.i("jsonList ########### ", ""+jsonList);
 
         mal_Id_Anime_To_Watch = new ArrayList<Integer>();
         to_Watch_List = new ArrayList<AnimeInToWatchList>();
 
-        jsonList = sharedPreferences.getString("ID_List", null);
         controller = new ToWatchController(this);
         controller.onCreate();
         //controller.clearCache();
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mal_Id_Anime_To_Watch.clear();
+        to_Watch_List.clear();
+        sharedPreferences = context.getSharedPreferences("userList", Context.MODE_PRIVATE);
+        jsonList = sharedPreferences.getString("ID_List", null);
         if(jsonList!=null)
         {
             mal_Id_Anime_To_Watch = controller.loadlist(jsonList);
@@ -65,7 +72,8 @@ public class ToWatchActivity extends AppCompatActivity {
                 controller.loadToWatchAnime("anime", Integer.toString(i));
             }
         }
-
+        if(mAdapter!=null)
+            mAdapter.notifyDataSetChanged();
     }
 
     public void addToList(AnimeInToWatchList animeInToWatchList)
