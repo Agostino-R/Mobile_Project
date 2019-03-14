@@ -20,26 +20,17 @@ public class MainMenuActivity extends AppCompatActivity {
         Button topButton;
         Button upcomButton;
         Button schedButton;
-        Button scrButton;
         Button searchButton;
         Button toWatchButton;
         final ScrollView mScrollView;
 
-        scrButton = findViewById(R.id.launch_button);
         topButton = findViewById(R.id.top_button);
         seasButton = findViewById(R.id.season_button);
         schedButton = findViewById(R.id.schedule_button);
         upcomButton = findViewById(R.id.upcoming_button);
         searchButton = findViewById(R.id.search_button);
-        mScrollView = findViewById(R.id.welcome_menu);
         toWatchButton = findViewById(R.id.to_watch);
 
-        scrButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mScrollView.fullScroll(View.FOCUS_DOWN);
-            }
-        });
 
         topButton.setOnClickListener(new View.OnClickListener() {
             @Override
