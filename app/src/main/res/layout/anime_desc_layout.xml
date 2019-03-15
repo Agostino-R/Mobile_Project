@@ -46,9 +46,8 @@
                 android:lines="1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="30dp"
+                android:textSize="20dp"
                 android:layout_below="@+id/image_for_desc"
-                android:layout_marginHorizontal="15dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="10dp"/>
 
