@@ -10,6 +10,8 @@ import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.mobile_project.Controller.SchedController;
@@ -33,6 +35,7 @@ public class SearchActivity extends AppCompatActivity {
     private List<AnimeInSearchList> mAnimeInSearchLists;
     private int page=1;
     private String search_field;
+    private Button launchSearch;
 
 
     @Override
@@ -43,23 +46,20 @@ public class SearchActivity extends AppCompatActivity {
         recyclerView = (RecyclerView) findViewById(R.id.search_recycler_view);
 
         searchContent = findViewById(R.id.search_content);
+        launchSearch = findViewById(R.id.launch_search_button);
 
         this.context = this;
 
         controller = new SearchController(this);
         controller.onCreate();
 
-        searchContent.addTextChangedListener(new TextWatcher() {
-
-            public void afterTextChanged(Editable s) {
-
+        launchSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Editable s = searchContent.getText();
                 controller.loadSearchResults("search", "anime", parseString(s.toString()));
                 searchContent.requestFocus();
             }
-
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-
-            public void onTextChanged(CharSequence s, int start, int before, int count) {}
         });
     }
 
