@@ -2,110 +2,72 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/main_menu">
 
-    <ScrollView
+    <Button
+        android:id="@+id/top_button"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_marginHorizontal="80dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/bouton"
+        android:fontFamily="@font/main_menu_font"
+        android:text="Top Anime" />
+
+    <Button
+        android:id="@+id/season_button"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/welcome_menu">
+        android:layout_height="60dp"
+        android:layout_below="@id/top_button"
+        android:background="@drawable/bouton"
+        android:layout_marginHorizontal="80dp"
+        android:fontFamily="@font/main_menu_font"
+        android:layout_marginTop="40dp"
+        android:text="Season Anime" />
 
+    <Button
+        android:id="@+id/schedule_button"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_below="@+id/season_button"
+        android:layout_marginHorizontal="80dp"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/main_menu_font"
+        android:background="@drawable/bouton"
+        android:text="Schedule" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+    <Button
+        android:id="@+id/upcoming_button"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_below="@+id/schedule_button"
+        android:layout_marginHorizontal="80dp"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/main_menu_font"
+        android:background="@drawable/bouton"
+        android:text="Upcoming Anime" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="100dp"
-                android:padding="3dp"
-                android:gravity="center"
-                android:lines="2"
-                android:fontFamily="serif"
-                android:textStyle="bold"
-                android:textSize="30dp"
-                android:textColor="@android:color/holo_blue_dark"
-                android:text="What's up \n       Anime?!"
+    <Button
+        android:id="@+id/search_button"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_below="@+id/upcoming_button"
+        android:layout_marginHorizontal="80dp"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/main_menu_font"
+        android:background="@drawable/bouton"
+        android:text="Search Anime" />
 
-                />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/crossover"
-                android:layout_marginTop="200dp"
-                android:padding="5dp"/>
-
-            <Button
-                android:id="@+id/launch_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="500dp"
-                android:background="@drawable/my_button"
-                android:text="             Show Me!             "
-                />
-
-            <Button
-                android:id="@+id/top_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="800dp"
-                android:layout_marginHorizontal="3dp"
-                android:background="@android:color/holo_blue_dark"
-                android:text="Top Anime"
-                />
-
-            <Button
-                android:id="@+id/season_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/top_button"
-                android:layout_marginTop="2dp"
-                android:layout_marginHorizontal="3dp"
-                android:background="@android:color/holo_blue_dark"
-                android:text="Season Anime"
-                />
-
-            <Button
-                android:id="@+id/schedule_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/season_button"
-                android:layout_marginTop="2dp"
-                android:layout_marginHorizontal="3dp"
-                android:background="@android:color/holo_blue_dark"
-                android:text="Schedule"
-                />
-
-            <Button
-                android:id="@+id/upcoming_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/schedule_button"
-                android:layout_marginTop="2dp"
-                android:layout_marginHorizontal="3dp"
-                android:background="@android:color/holo_blue_dark"
-                android:text="Upcoming Anime"
-                />
-
-            <Button
-                android:id="@+id/search_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/upcoming_button"
-                android:layout_marginTop="2dp"
-                android:layout_marginHorizontal="3dp"
-                android:background="@android:color/holo_blue_dark"
-                android:text="Search Anime"/>
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/myanimelist"
-                android:layout_marginTop="1200dp"/>
-
-        </RelativeLayout>
-    </ScrollView>
+    <Button
+        android:id="@+id/to_watch"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:fontFamily="@font/main_menu_font"
+        android:layout_below="@+id/search_button"
+        android:layout_marginHorizontal="80dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/bouton"
+        android:text="Anime To Watch" />
 
 </RelativeLayout>

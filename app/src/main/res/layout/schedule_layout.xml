@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/red_custom">
 
     <Spinner
         android:id="@+id/daySelect"
@@ -10,7 +11,8 @@
         android:layout_marginTop="4dp"
         android:layout_centerHorizontal="true"
         android:gravity="center"
-        style="@style/Base.Widget.AppCompat.Spinner.Underlined">
+        style="@style/Base.Widget.AppCompat.Spinner.Underlined"
+        android:textColor="@color/grey_back_custom">
     </Spinner>
 
     <android.support.v7.widget.RecyclerView
@@ -19,6 +21,7 @@
         android:layout_height="wrap_content"
         android:scrollbars="vertical"
         android:layout_marginTop="50dp"
+        android:background="@drawable/fond_liste"
         />
 
 

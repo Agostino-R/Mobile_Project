@@ -1,13 +1,10 @@
 package com.example.mobile_project.Controller;
 
 
-import android.content.Intent;
 import android.util.Log;
-import android.view.View;
 
 import com.example.mobile_project.Model.AnimeInSeasList;
 import com.example.mobile_project.Model.Api_Seas_Struct_Resp;
-import com.example.mobile_project.View.MainMenuActivity;
 import com.example.mobile_project.View.SeasonActivity;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="120dp"
+    android:layout_width="110dp"
     android:layout_height="200dp"
     android:layout_margin="5dp">
 
@@ -13,21 +13,21 @@
 
     <TextView
         android:id="@+id/firstLine"
-        android:layout_width="fill_parent"
-        android:layout_height="26dip"
-        android:layout_alignParentBottom="true"
+        android:layout_width="110dp"
+        android:layout_height="15dp"
+        android:layout_below="@id/anime_image"
         android:ellipsize="marquee"
-        android:text="Nom"
         android:textSize="12sp"
-        android:singleLine="true"/>
+        android:singleLine="true"
+        android:background="@android:color/darker_gray"/>
 
     <TextView
         android:id="@+id/secondLine"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="110dp"
+        android:layout_height="15dp"
         android:gravity="center_vertical"
-        android:layout_alignParentBottom="true"
-        android:text=""
-        android:textSize="12sp" />
+        android:layout_below="@id/firstLine"
+        android:textSize="12sp"
+        android:background="@android:color/darker_gray"/>
 
 </RelativeLayout>
