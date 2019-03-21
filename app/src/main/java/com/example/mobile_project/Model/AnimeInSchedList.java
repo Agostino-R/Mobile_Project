@@ -19,6 +19,7 @@ public class AnimeInSchedList {
     private float score;
 
 
+
     /*A faire plus tard
     @SerializedName("genres")
     private List<Genres> genres;*/
