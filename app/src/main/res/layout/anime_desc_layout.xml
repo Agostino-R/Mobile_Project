@@ -25,9 +25,10 @@
                 android:id="@+id/score_text"
                 android:text="Score :"
                 android:layout_toLeftOf="@+id/image_for_desc"
-                android:layout_marginRight="20dp"
+                android:layout_marginRight="40dp"
                 android:textSize="20dp"
                 android:layout_marginTop="50dp"
+                android:fontFamily="@font/main_font"
                 />
 
             <TextView
@@ -38,7 +39,30 @@
                 android:layout_alignLeft="@+id/score_text"
                 android:layout_marginTop="10dp"
                 android:textSize="15dp"
+                android:fontFamily="@font/main_font"
+                />
 
+            <TextView
+                android:id="@+id/pop_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/desc_note"
+                android:layout_marginTop="15dp"
+                android:layout_alignLeft="@id/score_text"
+                android:text="Popularity: "
+                android:textSize="20dp"
+                android:fontFamily="@font/main_font"
+                />
+
+            <TextView
+                android:id="@+id/desc_popularity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@id/score_text"
+                android:layout_below="@id/pop_text"
+                android:layout_marginTop="10dp"
+                android:textSize="15dp"
+                android:fontFamily="@font/main_font"
                 />
 
             <TextView
@@ -49,17 +73,41 @@
                 android:textSize="20dp"
                 android:layout_below="@+id/image_for_desc"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="10dp"/>
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/main_font"/>
 
             <Button
                 android:id="@+id/addToToWatchList"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
                 android:layout_below="@+id/title_desc"
-                android:background="@color/colorPrimary"
+                android:background="@drawable/bouton"
                 android:layout_marginTop="15dp"
+                android:fontFamily="@font/main_font"
                 android:layout_marginHorizontal="100dp"
                 android:text="+      Add"/>
+
+            <TextView
+                android:id="@+id/synopsis"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/addToToWatchList"
+                android:fontFamily="@font/main_font"
+                />
+
+            <TextView
+                android:id="@+id/background_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:layout_below="@id/synopsis"
+                android:layout_centerHorizontal="true"
+                android:fontFamily="@font/main_font"
+                />
+
+
         </RelativeLayout>
     </ScrollView>
 

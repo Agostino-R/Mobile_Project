@@ -22,6 +22,9 @@ public class AnimeDescActivity extends AppCompatActivity {
     private ImageView image;
     private TextView title;
     private TextView note;
+    private TextView popularity;
+    private TextView synopsis;
+    private TextView back_text;
     private int mal_id;
 
     @Override
@@ -32,6 +35,9 @@ public class AnimeDescActivity extends AppCompatActivity {
         image = findViewById(R.id.image_for_desc);
         title = findViewById(R.id.title_desc);
         note = findViewById(R.id.desc_note);
+        popularity = findViewById(R.id.desc_popularity);
+        synopsis = findViewById(R.id.synopsis);
+        back_text = findViewById(R.id.background_text);
         addButton = (Button) findViewById(R.id.addToToWatchList);
 
         sharedPreferences = this.getSharedPreferences("user_to_watch_anime", Context.MODE_PRIVATE);
@@ -55,6 +61,12 @@ public class AnimeDescActivity extends AppCompatActivity {
                 .into(image);
         title.setText(api_Desc_Struct_Resp.getTitle());
         note.setText(String.valueOf(api_Desc_Struct_Resp.getScore()));
+        synopsis.setText("Synopsis:\n" + api_Desc_Struct_Resp.getSynopsis());
+        if(api_Desc_Struct_Resp.getBackground()!=null)
+            back_text.setText("Background:\n" + api_Desc_Struct_Resp.getBackground());
+        else
+            back_text.setVisibility(View.GONE);
+        popularity.setText(String.valueOf(api_Desc_Struct_Resp.getPopularity()));
     }
 
     public int getMal_id() {

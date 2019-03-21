@@ -8,7 +8,9 @@ import com.squareup.picasso.Picasso;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.view.GestureDetector;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -32,6 +34,7 @@ public class TopAdapter extends RecyclerView.Adapter<TopAdapter.ViewHolder>
     private final OnBottomReachedListener scrollListener;
     OnBottomReachedListener onBottomReachedListener;
     private Context context;
+    private GestureDetector gestureDetector;
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         // each data item is just a string in this case
@@ -50,8 +53,9 @@ public class TopAdapter extends RecyclerView.Adapter<TopAdapter.ViewHolder>
 
         public void bind(final AnimeInTopList item, final OnItemClickListener listener) {
             itemView.setOnClickListener(new View.OnClickListener() {
-                @Override public void onClick(View v) {
-                   listener.onItemClick(item);
+                @Override
+                public void onClick(View v) {
+                    listener.onItemClick(item);
                 }
             });
         }
@@ -63,6 +67,7 @@ public class TopAdapter extends RecyclerView.Adapter<TopAdapter.ViewHolder>
         this.listener = listener;
         this.scrollListener = scrollListener;
         this.context = context;
+        this.gestureDetector = new GestureDetector(context, new SingleTapConfirm());
     }
 
 
@@ -109,5 +114,13 @@ public class TopAdapter extends RecyclerView.Adapter<TopAdapter.ViewHolder>
             return values.size();
         }
         return 0;
+    }
+
+    private class SingleTapConfirm extends GestureDetector.SimpleOnGestureListener {
+
+        @Override
+        public boolean onSingleTapUp(MotionEvent event) {
+            return true;
+        }
     }
 }
