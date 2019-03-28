@@ -32,6 +32,9 @@ public class AnimeDescActivity extends AppCompatActivity {
     private TextView sourceStatic;
     private TextView trailer;
     private TextView trailerStatic;
+    private TextView rank;
+    private TextView status;
+    private TextView episodes;
     private int mal_id;
 
     @Override
@@ -53,6 +56,9 @@ public class AnimeDescActivity extends AppCompatActivity {
         trailer = findViewById(R.id.trailer_url);
         sourceStatic = findViewById(R.id.src_pres);
         trailerStatic = findViewById(R.id.tr_pres);
+        rank = findViewById(R.id.rank);
+        status = findViewById(R.id.status);
+        episodes = findViewById(R.id.episodes);
 
         sharedPreferences = this.getSharedPreferences("user_to_watch_anime", Context.MODE_PRIVATE);
 
@@ -137,6 +143,9 @@ public class AnimeDescActivity extends AppCompatActivity {
         popularity.setText(String.valueOf(api_Desc_Struct_Resp.getPopularity()));
         source.setText(api_Desc_Struct_Resp.getUrl());
         trailer.setText(api_Desc_Struct_Resp.getTrailer_url());
+        rank.setText(String.valueOf(api_Desc_Struct_Resp.getRank()));
+        status.setText(api_Desc_Struct_Resp.getStatus());
+        episodes.setText("Nombre d'épisodes : " + String.valueOf(api_Desc_Struct_Resp.getEpisodes()));
     }
 
     public int getMal_id() {

@@ -4,7 +4,8 @@
     android:layout_height="match_parent"
     android:descendantFocusability="beforeDescendants"
     android:focusableInTouchMode="true"
-    android:background="@color/red_custom">
+    android:background="@color/red_custom"
+    android:id="@+id/SeasonL">
 
     <EditText
         android:id="@+id/yearSelect"

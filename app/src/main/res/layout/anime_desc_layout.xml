@@ -48,7 +48,7 @@
                 android:id="@+id/rank_text"
                 android:text="Rank :"
                 android:layout_toRightOf="@+id/image_for_desc"
-                android:layout_marginLeft="40dp"
+                android:layout_marginLeft="15dp"
                 android:textSize="20dp"
                 android:layout_marginTop="50dp"
                 android:fontFamily="@font/main_font"
