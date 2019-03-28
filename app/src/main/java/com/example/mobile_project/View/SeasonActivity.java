@@ -7,6 +7,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -68,13 +69,30 @@ public class SeasonActivity extends AppCompatActivity {
             }
         });
 
+        yearSelect.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (event.getAction() == KeyEvent.ACTION_DOWN)
+                {
+                    switch (keyCode)
+                    {
+                        case KeyEvent.KEYCODE_ENTER:
+                            findViewById(R.id.SeasonL).requestFocus();
+                            return true;
+                        default:
+                            break;
+                    }
+                }
+                return false;
+            }
+        });
+
         yearSelect.addTextChangedListener(new TextWatcher() {
 
             public void afterTextChanged(Editable s) {
 
                 year = s.toString();
                 controller.loadSeasList(year, season.toLowerCase());
-                yearSelect.requestFocus();
             }
 
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {}

@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -53,12 +54,32 @@ public class SearchActivity extends AppCompatActivity {
         controller = new SearchController(this);
         controller.onCreate();
 
+        searchContent.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (event.getAction() == KeyEvent.ACTION_DOWN)
+                {
+                    switch (keyCode)
+                    {
+                        case KeyEvent.KEYCODE_ENTER:
+                            Editable s = searchContent.getText();
+                            controller.loadSearchResults("search", "anime", parseString(s.toString()));
+                            findViewById(R.id.searchL).requestFocus();
+                            return true;
+                        default:
+                            break;
+                    }
+                }
+                return false;
+            }
+        });
+
         launchSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Editable s = searchContent.getText();
                 controller.loadSearchResults("search", "anime", parseString(s.toString()));
-                searchContent.requestFocus();
+                findViewById(R.id.searchL).requestFocus();
             }
         });
     }
