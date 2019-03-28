@@ -21,6 +21,9 @@ public class Api_Desc_Struct_Resp {
     @SerializedName("image_url")
     private String image_url;
 
+    @SerializedName("trailer_url")
+    private String trailer_url;
+
     @SerializedName("episodes")
     private int episodes;
 
@@ -29,9 +32,6 @@ public class Api_Desc_Struct_Resp {
 
     @SerializedName("status")
     private String status;
-
-    @SerializedName("airing")
-    private boolean airing;
 
     @SerializedName("score")
     private float score;
@@ -47,9 +47,6 @@ public class Api_Desc_Struct_Resp {
 
     @SerializedName("background")
     private String  background;
-
-    @SerializedName("genres")
-    private List<AnimeGenres> genres;
 
     public String getRequest_hash() {
         return request_hash;
@@ -83,9 +80,6 @@ public class Api_Desc_Struct_Resp {
         return status;
     }
 
-    public boolean isAiring() {
-        return airing;
-    }
 
     public float getScore() {
         return score;
@@ -107,7 +101,5 @@ public class Api_Desc_Struct_Resp {
         return background;
     }
 
-    public List<AnimeGenres> getGenres() {
-        return genres;
-    }
+    public String getTrailer_url() { return trailer_url; }
 }

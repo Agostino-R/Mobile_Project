@@ -43,13 +43,59 @@
                 />
 
             <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/rank_text"
+                android:text="Rank :"
+                android:layout_toRightOf="@+id/image_for_desc"
+                android:layout_marginLeft="40dp"
+                android:textSize="20dp"
+                android:layout_marginTop="50dp"
+                android:fontFamily="@font/main_font"
+                />
+
+            <TextView
+                android:id="@+id/rank"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rank_text"
+                android:layout_alignLeft="@+id/rank_text"
+                android:layout_marginTop="10dp"
+                android:textSize="15dp"
+                android:fontFamily="@font/main_font"
+                />
+
+            <TextView
+                android:id="@+id/status_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/desc_note"
+                android:layout_marginTop="15dp"
+                android:layout_alignLeft="@id/rank_text"
+                android:text="Status : "
+                android:textSize="20dp"
+                android:fontFamily="@font/main_font"
+                />
+
+            <TextView
+                android:id="@+id/status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/status_text"
+                android:layout_alignLeft="@+id/status_text"
+                android:layout_marginTop="10dp"
+                android:textSize="15dp"
+                android:fontFamily="@font/main_font"
+                />
+
+            <TextView
                 android:id="@+id/pop_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/desc_note"
                 android:layout_marginTop="15dp"
                 android:layout_alignLeft="@id/score_text"
-                android:text="Popularity: "
+                android:text="Popularity :"
                 android:textSize="20dp"
                 android:fontFamily="@font/main_font"
                 />
@@ -70,43 +116,147 @@
                 android:lines="1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20dp"
+                android:textSize="23dp"
                 android:layout_below="@+id/image_for_desc"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="10dp"
+                android:fontFamily="@font/main_font"/>
+
+            <TextView
+                android:id="@+id/episodes"
+                android:lines="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:layout_below="@+id/title_desc"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="6dp"
                 android:fontFamily="@font/main_font"/>
 
             <Button
                 android:id="@+id/addToToWatchList"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
-                android:layout_below="@+id/title_desc"
+                android:layout_below="@+id/episodes"
                 android:background="@drawable/bouton"
                 android:layout_marginTop="15dp"
                 android:fontFamily="@font/main_font"
                 android:layout_marginHorizontal="100dp"
-                android:text="+      Add"/>
+                android:text="+      Add"
+                />
+
+            <Button
+                android:id="@+id/synopsis_button"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                android:layout_below="@id/addToToWatchList"
+                android:text="SYNOPSIS"
+                android:background="@drawable/bouton_desc_layout"
+                android:fontFamily="@font/main_font"
+                android:textColor="@color/colorPrimary"
+                android:textSize="16dp"
+            />
 
             <TextView
                 android:id="@+id/synopsis"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="20dp"
+                android:layout_margin="10dp"
                 android:layout_centerHorizontal="true"
-                android:layout_below="@+id/addToToWatchList"
+                android:layout_below="@+id/synopsis_button"
                 android:fontFamily="@font/main_font"
+                android:textSize="14dp"
                 />
+
+            <Button
+                android:id="@+id/background_button"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="5dp"
+                android:layout_below="@id/synopsis"
+                android:background="@drawable/bouton_desc_layout"
+                android:text="BACKGROUND"
+                android:fontFamily="@font/main_font"
+                android:textColor="@color/colorPrimary"
+                android:textSize="16dp"/>
 
             <TextView
                 android:id="@+id/background_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                android:layout_below="@id/synopsis"
+                android:layout_margin="10dp"
+                android:layout_below="@id/background_button"
                 android:layout_centerHorizontal="true"
                 android:fontFamily="@font/main_font"
+                android:textSize="14dp"
+                android:text=" -- No Background --"
                 />
 
+            <Button
+                android:id="@+id/supp_info"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="5dp"
+                android:layout_below="@id/background_text"
+                android:background="@drawable/bouton_desc_layout"
+                android:text="MORE"
+                android:fontFamily="@font/main_font"
+                android:textColor="@color/colorPrimary"
+                android:textSize="16dp"/>
+
+            <TextView
+                android:id="@+id/src_pres"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/supp_info"
+                android:fontFamily="@font/main_font"
+                android:layout_marginLeft="10dp"
+                android:textSize="15dp"
+                android:textStyle="bold"
+                android:text="Source :"
+                android:gravity="left"
+                />
+
+            <TextView
+                android:id="@+id/souce_url"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_below="@id/src_pres"
+                android:gravity="left"
+                android:fontFamily="@font/main_font"
+                android:textSize="14dp"
+                android:autoLink="all"
+                android:clickable="true"
+                />
+
+            <TextView
+                android:id="@+id/tr_pres"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/souce_url"
+                android:fontFamily="@font/main_font"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:textSize="15dp"
+                android:textStyle="bold"
+                android:text="Trailer :"
+                android:gravity="left"
+                />
+
+            <TextView
+                android:id="@+id/trailer_url"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_below="@id/tr_pres"
+                android:gravity="left"
+                android:fontFamily="@font/main_font"
+                android:textSize="14dp"
+                android:autoLink="all"
+                android:clickable="true"
+                />
 
         </RelativeLayout>
     </ScrollView>
