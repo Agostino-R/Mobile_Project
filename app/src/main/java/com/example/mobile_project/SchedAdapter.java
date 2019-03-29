@@ -25,7 +25,6 @@ public class SchedAdapter extends RecyclerView.Adapter<SchedAdapter.ViewHolder>{
     private Context context;
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        // each data item is just a string in this case
         public TextView txtHeader;
         public TextView txtFooter;
         public ImageView loadedImage;
@@ -60,32 +59,25 @@ public class SchedAdapter extends RecyclerView.Adapter<SchedAdapter.ViewHolder>{
         notifyItemRemoved(position);
     }
 
-    // Provide a suitable constructor (depends on the kind of dataset)
     public SchedAdapter(List<AnimeInSchedList> myDataset, SchedAdapter.OnItemClickListener listener, Context context) {
         values = myDataset;
         this.listener = listener;
         this.context = context;
     }
 
-    // Create new views (invoked by the layout manager)
     @Override
     public SchedAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
                                                     int viewType) {
-        // create a new view
         LayoutInflater inflater = LayoutInflater.from(
                 parent.getContext());
         View v =
                 inflater.inflate(R.layout.item_layout, parent, false);
-        // set the view's size, margins, paddings and layout parameters
         ViewHolder vh = new ViewHolder(v);
         return vh;
     }
 
-    // Replace the contents of a view (invoked by the layout manager)
     @Override
     public void onBindViewHolder(SchedAdapter.ViewHolder holder, final int position) {
-        // - get element from your dataset at this position
-        // - replace the contents of the view with that element
         AnimeInSchedList currentAnimeInSchedList = values.get(position);
         final String name = currentAnimeInSchedList.getTitle();
         holder.bind(values.get(position), listener);
@@ -98,7 +90,6 @@ public class SchedAdapter extends RecyclerView.Adapter<SchedAdapter.ViewHolder>{
         holder.txtFooter.setText("Rank: " + currentAnimeInSchedList.getScore());
     }
 
-    // Return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
         if(values!=null) {

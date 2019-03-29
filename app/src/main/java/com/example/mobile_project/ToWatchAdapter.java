@@ -48,7 +48,6 @@ public class ToWatchAdapter extends RecyclerView.Adapter<ToWatchAdapter.ViewHold
         }
     }
 
-    // Provide a suitable constructor (depends on the kind of dataset)
     public ToWatchAdapter(ArrayList<AnimeInToWatchList> myDataset, OnItemClickListener listener, Context context) {
         values = myDataset;
         this.listener = listener;
@@ -56,25 +55,19 @@ public class ToWatchAdapter extends RecyclerView.Adapter<ToWatchAdapter.ViewHold
     }
 
 
-    // Create new views (invoked by the layout manager)
     @Override
     public ToWatchAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
                                                         int viewType) {
-        // create a new view
         LayoutInflater inflater = LayoutInflater.from(
                 parent.getContext());
         View v =
                 inflater.inflate(R.layout.item_layout, parent, false);
-        // set the view's size, margins, paddings and layout parameters
         ToWatchAdapter.ViewHolder vh = new ToWatchAdapter.ViewHolder(v);
         return vh;
     }
 
-    // Replace the contents of a view (invoked by the layout manager)
     @Override
     public void onBindViewHolder(ToWatchAdapter.ViewHolder holder, final int position) {
-        // - get element from your dataset at this position
-        // - replace the contents of the view with that element
         AnimeInToWatchList currentAnimeInToWatchList = values.get(position);
         final String name = currentAnimeInToWatchList.getTitle();
         holder.bind(values.get(position), listener);
@@ -87,7 +80,6 @@ public class ToWatchAdapter extends RecyclerView.Adapter<ToWatchAdapter.ViewHold
         holder.txtFooter.setText("Rank: " + currentAnimeInToWatchList.getScore());
     }
 
-    // Return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
         if (values != null) {

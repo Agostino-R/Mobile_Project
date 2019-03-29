@@ -3,25 +3,15 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/red_custom"
+    android:background="@drawable/acu_splash"
     >
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:textSize="40dp"
-        android:layout_marginTop="80dp"
-        android:text="ANIME CINEMATIC UNIVERSE"
-        android:textAlignment="center"
-        android:fontFamily="@font/main_font"
-        android:textColor="@color/grey_back_custom"/>
 
     <ImageView
         android:id="@+id/img_goku_anim"
         android:layout_width="match_parent"
         android:layout_height="90dp"
         android:layout_alignParentLeft="true"
-        android:layout_centerInParent="true"
+        android:layout_marginTop="450dp"
         />
 </RelativeLayout>

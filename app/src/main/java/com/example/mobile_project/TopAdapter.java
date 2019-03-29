@@ -29,12 +29,10 @@ public class TopAdapter extends RecyclerView.Adapter<TopAdapter.ViewHolder>
     private List<AnimeInTopList> values;
     private final OnItemClickListener listener;
     private final OnBottomReachedListener scrollListener;
-    OnBottomReachedListener onBottomReachedListener;
     private Context context;
     private GestureDetector gestureDetector;
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        // each data item is just a string in this case
         private TextView txtHeader;
         private TextView txtFooter;
         private ImageView loadedImage;
@@ -58,7 +56,6 @@ public class TopAdapter extends RecyclerView.Adapter<TopAdapter.ViewHolder>
         }
     }
 
-    // Provide a suitable constructor (depends on the kind of dataset)
     public TopAdapter(List<AnimeInTopList> myDataset, OnItemClickListener listener, OnBottomReachedListener scrollListener, Context context) {
         values = myDataset;
         this.listener = listener;
@@ -69,25 +66,19 @@ public class TopAdapter extends RecyclerView.Adapter<TopAdapter.ViewHolder>
 
 
 
-    // Create new views (invoked by the layout manager)
     @Override
     public TopAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
                                                     int viewType) {
-        // create a new view
         LayoutInflater inflater = LayoutInflater.from(
                 parent.getContext());
         View v =
                 inflater.inflate(R.layout.item_layout, parent, false);
-        // set the view's size, margins, paddings and layout parameters
         ViewHolder vh = new ViewHolder(v);
         return vh;
     }
 
-    // Replace the contents of a view (invoked by the layout manager)
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
-        // - get element from your dataset at this position
-        // - replace the contents of the view with that element
         AnimeInTopList currentTopAnimeInTopListListStruct = values.get(position);
         final String name = currentTopAnimeInTopListListStruct.getTitle();
         holder.bind(values.get(position), listener);
@@ -104,7 +95,6 @@ public class TopAdapter extends RecyclerView.Adapter<TopAdapter.ViewHolder>
         holder.txtFooter.setText("Rank: " + currentTopAnimeInTopListListStruct.getRank());
     }
 
-    // Return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
         if(values!=null) {

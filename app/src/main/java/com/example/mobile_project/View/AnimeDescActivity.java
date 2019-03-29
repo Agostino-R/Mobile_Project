@@ -130,7 +130,6 @@ public class AnimeDescActivity extends AppCompatActivity {
 
 
     public void showAnimeDesc(Api_Desc_Struct_Resp api_Desc_Struct_Resp) {
-        //Infinité de settext
         Picasso.get()
                 .load(api_Desc_Struct_Resp.getImage_url())
                 .resize(160, 230)

@@ -18,12 +18,6 @@ public class AnimeInSchedList {
     @SerializedName("score")
     private float score;
 
-
-
-    /*A faire plus tard
-    @SerializedName("genres")
-    private List<Genres> genres;*/
-
     public int getMal_id() {
         return mal_id;
     }

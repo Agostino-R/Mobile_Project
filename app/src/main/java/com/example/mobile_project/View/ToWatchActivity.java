@@ -42,9 +42,6 @@ public class ToWatchActivity extends AppCompatActivity {
 
         recyclerView = (RecyclerView) findViewById(R.id.to_watch_recycler_view);
 
-
-        Log.i("jsonList ########### ", ""+jsonList);
-
         mal_Id_Anime_To_Watch = new ArrayList<Integer>();
         to_Watch_List = new ArrayList<AnimeInToWatchList>();
 

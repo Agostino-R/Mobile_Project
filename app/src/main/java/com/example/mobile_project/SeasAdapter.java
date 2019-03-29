@@ -60,14 +60,12 @@ public class SeasAdapter extends RecyclerView.Adapter<SeasAdapter.ViewHolder>{
         notifyItemRemoved(position);
     }
 
-    // Provide a suitable constructor (depends on the kind of dataset)
     public SeasAdapter(List<AnimeInSeasList> myDataset, SeasAdapter.OnItemClickListener listener, Context context) {
         values = myDataset;
         this.listener = listener;
         this.context = context;
     }
 
-    // Create new views (invoked by the layout manager)
     @Override
     public SeasAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
                                                     int viewType) {
@@ -76,16 +74,12 @@ public class SeasAdapter extends RecyclerView.Adapter<SeasAdapter.ViewHolder>{
                 parent.getContext());
         View v =
                 inflater.inflate(R.layout.item_layout, parent, false);
-        // set the view's size, margins, paddings and layout parameters
         SeasAdapter.ViewHolder vh = new SeasAdapter.ViewHolder(v);
         return vh;
     }
 
-    // Replace the contents of a view (invoked by the layout manager)
     @Override
     public void onBindViewHolder(SeasAdapter.ViewHolder holder, final int position) {
-        // - get element from your dataset at this position
-        // - replace the contents of the view with that element
         AnimeInSeasList currentSeasAnimeInSeasListListStruct = values.get(position);
         final String name = currentSeasAnimeInSeasListListStruct.getTitle();
         holder.bind(values.get(position), listener);
@@ -98,7 +92,6 @@ public class SeasAdapter extends RecyclerView.Adapter<SeasAdapter.ViewHolder>{
         holder.txtFooter.setText("Score: " + currentSeasAnimeInSeasListListStruct.getScore());
     }
 
-    // Return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
         if(values!=null) {

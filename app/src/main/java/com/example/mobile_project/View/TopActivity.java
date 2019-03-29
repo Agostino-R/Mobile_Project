@@ -55,11 +55,9 @@ public class TopActivity extends AppCompatActivity {
 
     public void showTopList(List<AnimeInTopList> RespAnimeInTopList) {
         recyclerView.setHasFixedSize(true);
-        // use a linear layout manager
         layoutManager = new GridLayoutManager(this, 3, GridLayoutManager.VERTICAL, true);
         ((GridLayoutManager) layoutManager).setReverseLayout(false);
         recyclerView.setLayoutManager(layoutManager);
-        // define an adapter
         mAdapter = new TopAdapter(RespAnimeInTopList, getTopListener(),getScrollListener(), context);
         recyclerView.setAdapter(mAdapter);
     }

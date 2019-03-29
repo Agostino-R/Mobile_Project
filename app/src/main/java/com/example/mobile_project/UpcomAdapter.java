@@ -25,7 +25,6 @@ public class UpcomAdapter extends RecyclerView.Adapter<UpcomAdapter.ViewHolder>{
     private Context context;
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        // each data item is just a string in this case
         public TextView txtHeader;
         public ImageView loadedImage;
         public View layout;
@@ -58,32 +57,25 @@ public class UpcomAdapter extends RecyclerView.Adapter<UpcomAdapter.ViewHolder>{
         notifyItemRemoved(position);
     }
 
-    // Provide a suitable constructor (depends on the kind of dataset)
     public UpcomAdapter(List<AnimeInUpcomingList> myDataset, UpcomAdapter.OnItemClickListener listener, Context context) {
         values = myDataset;
         this.listener = listener;
         this.context = context;
     }
 
-    // Create new views (invoked by the layout manager)
     @Override
     public UpcomAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
                                                     int viewType) {
-        // create a new view
         LayoutInflater inflater = LayoutInflater.from(
                 parent.getContext());
         View v =
                 inflater.inflate(R.layout.item_layout, parent, false);
-        // set the view's size, margins, paddings and layout parameters
         ViewHolder vh = new ViewHolder(v);
         return vh;
     }
 
-    // Replace the contents of a view (invoked by the layout manager)
     @Override
     public void onBindViewHolder(UpcomAdapter.ViewHolder holder, final int position) {
-        // - get element from your dataset at this position
-        // - replace the contents of the view with that element
         AnimeInUpcomingList currentUpcomAnimeInUpcomListListStruct = values.get(position);
         final String name = currentUpcomAnimeInUpcomListListStruct.getTitle();
         holder.bind(values.get(position), listener);
@@ -95,7 +87,6 @@ public class UpcomAdapter extends RecyclerView.Adapter<UpcomAdapter.ViewHolder>{
                 .into(holder.loadedImage);
     }
 
-    // Return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
         if(values!=null) {

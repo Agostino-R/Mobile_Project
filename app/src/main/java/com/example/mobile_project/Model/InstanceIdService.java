@@ -41,8 +41,6 @@ public class InstanceIdService extends FirebaseInstanceIdService {
             connection.connect();
 
             if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
-                // Do whatever you want after the
-                // token is successfully stored on the server
             }
 
         } catch (MalformedURLException e) {
