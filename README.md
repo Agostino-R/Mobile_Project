@@ -107,5 +107,6 @@ L'image de fond est la même mais dans le chargement on a Son Goku qui fait un K
 <br>
 Pour réaliser cela j'ai utilisé une feuille de sprite récupérée sur <I>https://www.spriters-resource.com/</I>
 , j'ai découpé les images qui m'interéssaient et ensuite j'ai mis en place l'animation. 
+
 ## Conclusion
 J'ai vraiment aimé faire ce projet. La programmation mobile a été un coup de coeur pour moi car  j'ai appris quelque chose que je pourrais appliquer dans le futur. Si un jour je ne trouve pas une application sur téléphone, je pourrais la faire! De plus développer une application sur téléphone est une activité sympatique, au delà du côté pratique. 
