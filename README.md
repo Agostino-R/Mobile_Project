@@ -94,6 +94,15 @@ Et voici l'activity affichant la description d'un anime:
   <img width ="216" height="440" src = "https://image.noelshack.com/fichiers/2019/13/5/1553868289-53478352-337159240253608-5446351631811608576-n.jpg">
 </p>
 
+Dans la liste des animes on a pas mal d'informations:
+* Le rang, la popularité et la note de l'anime
+* Le nombre d'épisodes
+* Si l'anime est terniné ou pas
+* Le synopsis
+* Le background (contexte danns lequel l'anime s'ést fait)
+* Un lien vers la page officielle MyAnimeList
+* Un lien vers un trailer sur Youtube
+
 ### Les SplashScreens
 J'ai ajouté dans mon programmes 2 SplashScreen. Le premier se lance au tout début de l'application. Voici un image:
 <p align="center">
