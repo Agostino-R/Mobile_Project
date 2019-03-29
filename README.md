@@ -62,6 +62,7 @@ J'ai utilisé les appels suivants:<br>
 * Anime.
 
 ## Mon application
+### Les écrans
 Sur mon application il y a 8 Activity. Les voici:<br>
 * Le menu principal ou on choisit quelle liste voir;
 * Le top des animes;
@@ -70,9 +71,8 @@ Sur mon application il y a 8 Activity. Les voici:<br>
 * Les animes qui sortiront bientôt;
 * Une recherche;
 * La liste "To Watch List";
-* La description d'un anime. 
-
-### Les écrans
+* La description d'un anime. <br>
+### Les screenshots
 Les écrans se ressemblent, on va donc mettre ceux avec des spécificités:<br>
 Voci le menu principal:
 
@@ -94,3 +94,19 @@ Et voici l'activity affichant la description d'un anime:
   <img width ="216" height="440" src = "https://image.noelshack.com/fichiers/2019/13/5/1553868289-53478352-337159240253608-5446351631811608576-n.jpg">
 </p>
 
+### Les SplashScreens
+J'ai ajouté dans mon programmes 2 SplashScreen. Le premier se lance au tout début de l'application. Voici un image:
+<p align="center">
+  <img width ="216" height="440" src = "https://image.noelshack.com/fichiers/2019/13/5/1553895020-launch.jpg">
+</p>
+On a aussi un écran de chargement qui ressemble à cela:
+<p align="center">
+  <img width ="216" height="440" src = "https://image.noelshack.com/fichiers/2019/13/5/1553895334-goku-anim.jpg">
+</p>
+L'image de fond est la même mais dans le chargement on a Son Goku qui fait un Kamehameha!
+<br>
+Pour réaliser cela j'ai utilisé une feuille de sprite récupérée sur <I>https://www.spriters-resource.com/</I>
+, j'ai découpé les images qui m'interéssaient et ensuite j'ai mis en place l'animation. 
+<br><br>
+##Conclusion
+J'ai vraiment aimé faire ce projet. La programmation mobile a été un coup de coeur pour moi car  j'ai appris quelque chose que je pourrais appliquer dans le futur. Si un jour je ne trouve pas une application sur téléphone, je pourrais la faire! De plus développer une application sur téléphone est une activité sympatique, au delà du côté pratique. 
