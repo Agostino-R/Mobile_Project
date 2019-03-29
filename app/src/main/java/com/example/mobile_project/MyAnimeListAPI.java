@@ -1,4 +1,4 @@
-package com.example.mobile_project.Controller;
+package com.example.mobile_project;
 
 import com.example.mobile_project.Model.AnimeInToWatchList;
 import com.example.mobile_project.Model.Api_Desc_Struct_Resp;

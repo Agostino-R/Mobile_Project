@@ -1,4 +1,4 @@
-package com.example.mobile_project.Controller;
+package com.example.mobile_project;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,25 +9,25 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.mobile_project.Model.AnimeInUpcomingList;
-import com.example.mobile_project.R;
+import com.example.mobile_project.Model.AnimeInSchedList;
 import com.example.mobile_project.View.AnimeDescActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class UpcomAdapter extends RecyclerView.Adapter<UpcomAdapter.ViewHolder>{
+public class SchedAdapter extends RecyclerView.Adapter<SchedAdapter.ViewHolder>{
     public interface OnItemClickListener {
-        void onItemClick(AnimeInUpcomingList item);
+        void onItemClick(AnimeInSchedList item);
     }
 
-    private List<AnimeInUpcomingList> values;
-    private final UpcomAdapter.OnItemClickListener listener;
+    private List<AnimeInSchedList> values;
+    private final SchedAdapter.OnItemClickListener listener;
     private Context context;
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         // each data item is just a string in this case
         public TextView txtHeader;
+        public TextView txtFooter;
         public ImageView loadedImage;
         public View layout;
 
@@ -35,10 +35,11 @@ public class UpcomAdapter extends RecyclerView.Adapter<UpcomAdapter.ViewHolder>{
             super(v);
             layout = v;
             txtHeader = (TextView) v.findViewById(R.id.firstLine);
+            txtFooter = (TextView) v.findViewById(R.id.secondLine);
             loadedImage = (ImageView) v.findViewById(R.id.anime_image);
         }
 
-        public void bind(final AnimeInUpcomingList item, final UpcomAdapter.OnItemClickListener listener) {
+        public void bind(final AnimeInSchedList item, final SchedAdapter.OnItemClickListener listener) {
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override public void onClick(View v) {
                     Intent anime_desc_activity = new Intent(context, AnimeDescActivity.class);
@@ -49,7 +50,7 @@ public class UpcomAdapter extends RecyclerView.Adapter<UpcomAdapter.ViewHolder>{
         }
     }
 
-    public void add(int position, AnimeInUpcomingList item) {
+    public void add(int position, AnimeInSchedList item) {
         values.add(position, item);
         notifyItemInserted(position);
     }
@@ -60,7 +61,7 @@ public class UpcomAdapter extends RecyclerView.Adapter<UpcomAdapter.ViewHolder>{
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public UpcomAdapter(List<AnimeInUpcomingList> myDataset, UpcomAdapter.OnItemClickListener listener, Context context) {
+    public SchedAdapter(List<AnimeInSchedList> myDataset, SchedAdapter.OnItemClickListener listener, Context context) {
         values = myDataset;
         this.listener = listener;
         this.context = context;
@@ -68,7 +69,7 @@ public class UpcomAdapter extends RecyclerView.Adapter<UpcomAdapter.ViewHolder>{
 
     // Create new views (invoked by the layout manager)
     @Override
-    public UpcomAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
+    public SchedAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
                                                     int viewType) {
         // create a new view
         LayoutInflater inflater = LayoutInflater.from(
@@ -82,18 +83,19 @@ public class UpcomAdapter extends RecyclerView.Adapter<UpcomAdapter.ViewHolder>{
 
     // Replace the contents of a view (invoked by the layout manager)
     @Override
-    public void onBindViewHolder(UpcomAdapter.ViewHolder holder, final int position) {
+    public void onBindViewHolder(SchedAdapter.ViewHolder holder, final int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
-        AnimeInUpcomingList currentUpcomAnimeInUpcomListListStruct = values.get(position);
-        final String name = currentUpcomAnimeInUpcomListListStruct.getTitle();
+        AnimeInSchedList currentAnimeInSchedList = values.get(position);
+        final String name = currentAnimeInSchedList.getTitle();
         holder.bind(values.get(position), listener);
 
         holder.txtHeader.setText(name);
         Picasso.get()
-                .load(currentUpcomAnimeInUpcomListListStruct.getImage_url())
+                .load(currentAnimeInSchedList.getImage_url())
                 .resize(110, 180)
                 .into(holder.loadedImage);
+        holder.txtFooter.setText("Rank: " + currentAnimeInSchedList.getScore());
     }
 
     // Return the size of your dataset (invoked by the layout manager)

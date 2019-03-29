@@ -1,4 +1,4 @@
-package com.example.mobile_project.Controller;
+package com.example.mobile_project;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,26 +9,24 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.mobile_project.Model.AnimeInSeasList;
-import com.example.mobile_project.R;
+import com.example.mobile_project.Model.AnimeInUpcomingList;
 import com.example.mobile_project.View.AnimeDescActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class SeasAdapter extends RecyclerView.Adapter<SeasAdapter.ViewHolder>{
+public class UpcomAdapter extends RecyclerView.Adapter<UpcomAdapter.ViewHolder>{
     public interface OnItemClickListener {
-        void onItemClick(AnimeInSeasList item);
+        void onItemClick(AnimeInUpcomingList item);
     }
 
-    private List<AnimeInSeasList> values;
-    private final SeasAdapter.OnItemClickListener listener;
+    private List<AnimeInUpcomingList> values;
+    private final UpcomAdapter.OnItemClickListener listener;
     private Context context;
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         // each data item is just a string in this case
         public TextView txtHeader;
-        public TextView txtFooter;
         public ImageView loadedImage;
         public View layout;
 
@@ -36,11 +34,10 @@ public class SeasAdapter extends RecyclerView.Adapter<SeasAdapter.ViewHolder>{
             super(v);
             layout = v;
             txtHeader = (TextView) v.findViewById(R.id.firstLine);
-            txtFooter = (TextView) v.findViewById(R.id.secondLine);
             loadedImage = (ImageView) v.findViewById(R.id.anime_image);
         }
 
-        public void bind(final AnimeInSeasList item, final SeasAdapter.OnItemClickListener listener) {
+        public void bind(final AnimeInUpcomingList item, final UpcomAdapter.OnItemClickListener listener) {
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override public void onClick(View v) {
                     Intent anime_desc_activity = new Intent(context, AnimeDescActivity.class);
@@ -51,7 +48,7 @@ public class SeasAdapter extends RecyclerView.Adapter<SeasAdapter.ViewHolder>{
         }
     }
 
-    public void add(int position, AnimeInSeasList item) {
+    public void add(int position, AnimeInUpcomingList item) {
         values.add(position, item);
         notifyItemInserted(position);
     }
@@ -62,7 +59,7 @@ public class SeasAdapter extends RecyclerView.Adapter<SeasAdapter.ViewHolder>{
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public SeasAdapter(List<AnimeInSeasList> myDataset, SeasAdapter.OnItemClickListener listener, Context context) {
+    public UpcomAdapter(List<AnimeInUpcomingList> myDataset, UpcomAdapter.OnItemClickListener listener, Context context) {
         values = myDataset;
         this.listener = listener;
         this.context = context;
@@ -70,7 +67,7 @@ public class SeasAdapter extends RecyclerView.Adapter<SeasAdapter.ViewHolder>{
 
     // Create new views (invoked by the layout manager)
     @Override
-    public SeasAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
+    public UpcomAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
                                                     int viewType) {
         // create a new view
         LayoutInflater inflater = LayoutInflater.from(
@@ -78,25 +75,24 @@ public class SeasAdapter extends RecyclerView.Adapter<SeasAdapter.ViewHolder>{
         View v =
                 inflater.inflate(R.layout.item_layout, parent, false);
         // set the view's size, margins, paddings and layout parameters
-        SeasAdapter.ViewHolder vh = new SeasAdapter.ViewHolder(v);
+        ViewHolder vh = new ViewHolder(v);
         return vh;
     }
 
     // Replace the contents of a view (invoked by the layout manager)
     @Override
-    public void onBindViewHolder(SeasAdapter.ViewHolder holder, final int position) {
+    public void onBindViewHolder(UpcomAdapter.ViewHolder holder, final int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
-        AnimeInSeasList currentSeasAnimeInSeasListListStruct = values.get(position);
-        final String name = currentSeasAnimeInSeasListListStruct.getTitle();
+        AnimeInUpcomingList currentUpcomAnimeInUpcomListListStruct = values.get(position);
+        final String name = currentUpcomAnimeInUpcomListListStruct.getTitle();
         holder.bind(values.get(position), listener);
 
         holder.txtHeader.setText(name);
         Picasso.get()
-                .load(currentSeasAnimeInSeasListListStruct.getImage_url())
+                .load(currentUpcomAnimeInUpcomListListStruct.getImage_url())
                 .resize(110, 180)
                 .into(holder.loadedImage);
-        holder.txtFooter.setText("Score: " + currentSeasAnimeInSeasListListStruct.getScore());
     }
 
     // Return the size of your dataset (invoked by the layout manager)

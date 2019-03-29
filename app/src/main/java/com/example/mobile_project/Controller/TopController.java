@@ -3,6 +3,7 @@ package com.example.mobile_project.Controller;
 import android.util.Log;
 
 import com.example.mobile_project.Model.Api_Top_Struct_Resp;
+import com.example.mobile_project.MyAnimeListAPI;
 import com.example.mobile_project.View.TopActivity;
 import com.example.mobile_project.Model.AnimeInTopList;
 import com.google.gson.Gson;

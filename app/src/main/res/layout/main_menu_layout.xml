@@ -75,7 +75,7 @@
                 android:layout_marginHorizontal="80dp"
                 android:layout_marginTop="40dp"
                 android:background="@drawable/bouton"
-                android:text="Anime To Watch" />
+                android:text="TO WATCH LIST" />
         </RelativeLayout>
     </ScrollView>
 </RelativeLayout>

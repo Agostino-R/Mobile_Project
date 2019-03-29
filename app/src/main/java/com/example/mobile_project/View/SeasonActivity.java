@@ -14,7 +14,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 
-import com.example.mobile_project.Controller.SeasAdapter;
+import com.example.mobile_project.SeasAdapter;
 import com.example.mobile_project.Controller.SeasonController;
 import com.example.mobile_project.Model.AnimeInSeasList;
 import com.example.mobile_project.R;

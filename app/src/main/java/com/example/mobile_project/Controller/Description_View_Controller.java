@@ -3,10 +3,9 @@ package com.example.mobile_project.Controller;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
-import android.widget.Button;
 
-import com.example.mobile_project.Model.AnimeInToWatchList;
 import com.example.mobile_project.Model.Api_Desc_Struct_Resp;
+import com.example.mobile_project.MyAnimeListAPI;
 import com.example.mobile_project.View.AnimeDescActivity;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

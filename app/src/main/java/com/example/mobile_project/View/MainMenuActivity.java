@@ -22,7 +22,6 @@ public class MainMenuActivity extends AppCompatActivity {
         Button schedButton;
         Button searchButton;
         Button toWatchButton;
-        final ScrollView mScrollView;
 
         topButton = findViewById(R.id.top_button);
         seasButton = findViewById(R.id.season_button);
@@ -35,7 +34,8 @@ public class MainMenuActivity extends AppCompatActivity {
         topButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent topL = new Intent(MainMenuActivity.this, TopActivity.class);
+                Intent topL = new Intent(MainMenuActivity.this, LoadingActivity.class);
+                topL.putExtra("activity_to_launch", 1);
                 startActivity(topL);
             }
         });
@@ -43,15 +43,17 @@ public class MainMenuActivity extends AppCompatActivity {
         seasButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent schL = new Intent(MainMenuActivity.this, SeasonActivity.class);
-                startActivity(schL);
+                Intent seas = new Intent(MainMenuActivity.this, LoadingActivity.class);
+                seas.putExtra("activity_to_launch", 2);
+                startActivity(seas);
             }
         });
 
         schedButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent schL = new Intent(MainMenuActivity.this, SchedActivity.class);
+                Intent schL = new Intent(MainMenuActivity.this, LoadingActivity.class);
+                schL.putExtra("activity_to_launch", 3);
                 startActivity(schL);
             }
         });
@@ -59,7 +61,8 @@ public class MainMenuActivity extends AppCompatActivity {
         upcomButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent upL = new Intent(MainMenuActivity.this, UpcomingActivity.class);
+                Intent upL = new Intent(MainMenuActivity.this, LoadingActivity.class);
+                upL.putExtra("activity_to_launch", 4);
                 startActivity(upL);
             }
         });
@@ -67,7 +70,8 @@ public class MainMenuActivity extends AppCompatActivity {
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent search = new Intent(MainMenuActivity.this, SearchActivity.class);
+                Intent search = new Intent(MainMenuActivity.this, LoadingActivity.class);
+                search.putExtra("activity_to_launch", 5);
                 startActivity(search);
             }
         });
@@ -75,8 +79,9 @@ public class MainMenuActivity extends AppCompatActivity {
         toWatchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent options = new Intent(MainMenuActivity.this, ToWatchActivity.class);
-                startActivity(options);
+                Intent toWatch = new Intent(MainMenuActivity.this, LoadingActivity.class);
+                toWatch.putExtra("activity_to_launch", 6);
+                startActivity(toWatch);
             }
         });
     }

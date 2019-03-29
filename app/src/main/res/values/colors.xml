@@ -5,4 +5,5 @@
     <color name="colorAccent">#D81B60</color>
     <color name="grey_back_custom">#FDF5F5F8</color>
     <color name="red_custom">#FD813838</color>
+    <color name="acu_red">#FCAB0605</color>
 </resources>

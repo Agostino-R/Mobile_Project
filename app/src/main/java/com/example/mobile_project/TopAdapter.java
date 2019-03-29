@@ -1,25 +1,24 @@
-package com.example.mobile_project.Controller;
+package com.example.mobile_project;
+
+import com.example.mobile_project.Model.AnimeInTopList;
+import com.squareup.picasso.Picasso;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.view.GestureDetector;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.mobile_project.Model.AnimeInSearchList;
-import com.example.mobile_project.R;
-import com.example.mobile_project.View.AnimeDescActivity;
-import com.squareup.picasso.Picasso;
-
 import java.util.List;
 
-public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder> {
-
+public class TopAdapter extends RecyclerView.Adapter<TopAdapter.ViewHolder>
+{
     public interface OnItemClickListener {
-        void onItemClick(AnimeInSearchList item);
+        void onItemClick(AnimeInTopList item);
     }
 
     public interface OnBottomReachedListener {
@@ -27,11 +26,12 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder
         void onBottomReached(int position);
     }
 
-    private List<AnimeInSearchList> values;
-    private final SearchAdapter.OnItemClickListener listener;
-    private final SearchAdapter.OnBottomReachedListener scrollListener;
-    SearchAdapter.OnBottomReachedListener onBottomReachedListener;
+    private List<AnimeInTopList> values;
+    private final OnItemClickListener listener;
+    private final OnBottomReachedListener scrollListener;
+    OnBottomReachedListener onBottomReachedListener;
     private Context context;
+    private GestureDetector gestureDetector;
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         // each data item is just a string in this case
@@ -48,9 +48,10 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder
             loadedImage = (ImageView) v.findViewById(R.id.anime_image);
         }
 
-        public void bind(final AnimeInSearchList item, final SearchAdapter.OnItemClickListener listener) {
+        public void bind(final AnimeInTopList item, final OnItemClickListener listener) {
             itemView.setOnClickListener(new View.OnClickListener() {
-                @Override public void onClick(View v) {
+                @Override
+                public void onClick(View v) {
                     listener.onItemClick(item);
                 }
             });
@@ -58,18 +59,19 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public SearchAdapter(List<AnimeInSearchList> myDataset, SearchAdapter.OnItemClickListener listener, SearchAdapter.OnBottomReachedListener scrollListener, Context context) {
+    public TopAdapter(List<AnimeInTopList> myDataset, OnItemClickListener listener, OnBottomReachedListener scrollListener, Context context) {
         values = myDataset;
         this.listener = listener;
         this.scrollListener = scrollListener;
         this.context = context;
+        this.gestureDetector = new GestureDetector(context, new SingleTapConfirm());
     }
 
 
 
     // Create new views (invoked by the layout manager)
     @Override
-    public SearchAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
+    public TopAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
                                                     int viewType) {
         // create a new view
         LayoutInflater inflater = LayoutInflater.from(
@@ -77,28 +79,29 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder
         View v =
                 inflater.inflate(R.layout.item_layout, parent, false);
         // set the view's size, margins, paddings and layout parameters
-        SearchAdapter.ViewHolder vh = new SearchAdapter.ViewHolder(v);
+        ViewHolder vh = new ViewHolder(v);
         return vh;
     }
 
     // Replace the contents of a view (invoked by the layout manager)
     @Override
-    public void onBindViewHolder(SearchAdapter.ViewHolder holder, final int position) {
+    public void onBindViewHolder(ViewHolder holder, final int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
-        AnimeInSearchList currentAnimeInSearchList = values.get(position);
+        AnimeInTopList currentTopAnimeInTopListListStruct = values.get(position);
+        final String name = currentTopAnimeInTopListListStruct.getTitle();
         holder.bind(values.get(position), listener);
 
         if (position == values.size() - 1){
             this.scrollListener.onBottomReached(position);
         }
 
-        holder.txtHeader.setText(currentAnimeInSearchList.getTitle());
+        holder.txtHeader.setText(name);
         Picasso.get()
-                .load(currentAnimeInSearchList.getImage_url())
-                .resize(110, 180)
+                .load(currentTopAnimeInTopListListStruct.getImage_url())
+                .resize(120, 190)
                 .into(holder.loadedImage);
-        holder.txtFooter.setText("Rank: " + currentAnimeInSearchList.getScore());
+        holder.txtFooter.setText("Rank: " + currentTopAnimeInTopListListStruct.getRank());
     }
 
     // Return the size of your dataset (invoked by the layout manager)
@@ -108,5 +111,13 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder
             return values.size();
         }
         return 0;
+    }
+
+    private class SingleTapConfirm extends GestureDetector.SimpleOnGestureListener {
+
+        @Override
+        public boolean onSingleTapUp(MotionEvent event) {
+            return true;
+        }
     }
 }
