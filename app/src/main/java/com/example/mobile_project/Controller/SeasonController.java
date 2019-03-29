@@ -5,6 +5,7 @@ import android.util.Log;
 
 import com.example.mobile_project.Model.AnimeInSeasList;
 import com.example.mobile_project.Model.Api_Seas_Struct_Resp;
+import com.example.mobile_project.MyAnimeListAPI;
 import com.example.mobile_project.View.SeasonActivity;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

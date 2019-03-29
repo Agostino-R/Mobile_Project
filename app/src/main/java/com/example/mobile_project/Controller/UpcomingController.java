@@ -4,6 +4,7 @@ import android.util.Log;
 
 import com.example.mobile_project.Model.AnimeInUpcomingList;
 import com.example.mobile_project.Model.Api_Upcoming_Struct_Resp;
+import com.example.mobile_project.MyAnimeListAPI;
 import com.example.mobile_project.View.UpcomingActivity;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

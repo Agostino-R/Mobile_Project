@@ -11,16 +11,13 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.mobile_project.Controller.ToWatchAdapter;
+import com.example.mobile_project.ToWatchAdapter;
 import com.example.mobile_project.Controller.ToWatchController;
 import com.example.mobile_project.Model.AnimeInToWatchList;
 import com.example.mobile_project.R;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 public class ToWatchActivity extends AppCompatActivity {
     private List<Integer> mal_Id_Anime_To_Watch;

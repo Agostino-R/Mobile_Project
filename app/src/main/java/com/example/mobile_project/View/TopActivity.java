@@ -2,26 +2,17 @@ package com.example.mobile_project.View;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.MotionEvent;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.view.animation.RotateAnimation;
-import android.view.animation.TranslateAnimation;
-import android.widget.ImageView;
 
 import com.example.mobile_project.Controller.TopController;
 import com.example.mobile_project.Model.AnimeInTopList;
-import com.example.mobile_project.Controller.TopAdapter;
+import com.example.mobile_project.TopAdapter;
 import com.example.mobile_project.R;
 
 import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class TopActivity extends AppCompatActivity {
     private RecyclerView recyclerView;

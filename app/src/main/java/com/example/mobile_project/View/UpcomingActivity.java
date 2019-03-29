@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
-import com.example.mobile_project.Controller.UpcomAdapter;
+import com.example.mobile_project.UpcomAdapter;
 import com.example.mobile_project.Controller.UpcomingController;
 import com.example.mobile_project.Model.AnimeInUpcomingList;
 import com.example.mobile_project.R;

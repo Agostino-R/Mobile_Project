@@ -10,7 +10,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
-import com.example.mobile_project.Controller.SchedAdapter;
+import com.example.mobile_project.SchedAdapter;
 import com.example.mobile_project.Controller.SchedController;
 import com.example.mobile_project.Model.AnimeInSchedList;
 import com.example.mobile_project.R;

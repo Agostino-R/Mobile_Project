@@ -8,19 +8,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.example.mobile_project.Controller.SchedController;
-import com.example.mobile_project.Controller.SearchAdapter;
+import com.example.mobile_project.SearchAdapter;
 import com.example.mobile_project.Controller.SearchController;
-import com.example.mobile_project.Controller.TopAdapter;
 import com.example.mobile_project.Model.AnimeInSearchList;
-import com.example.mobile_project.Model.AnimeInTopList;
 import com.example.mobile_project.R;
 
 import java.util.List;

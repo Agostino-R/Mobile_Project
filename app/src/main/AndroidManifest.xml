@@ -6,13 +6,14 @@
     <application
         android:allowBackup="true"
         android:windowSoftInputMode="stateHidden"
-        android:icon="@drawable/acu"
+        android:icon="@drawable/acu_splash"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".View.MainMenuActivity"
-            android:screenOrientation="portrait">
+        <activity android:name=".View.SplashScreen"
+            android:screenOrientation="portrait"
+            android:theme="@style/launchStyle">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -54,6 +55,15 @@
 
         <activity
             android:name=".View.ToWatchActivity"
+            android:screenOrientation="portrait"
+            android:label="Mobile_Project" />
+
+        <activity
+            android:name=".View.MainMenuActivity"
+            android:screenOrientation="portrait"
+            android:label="Mobile_Project" />
+        <activity
+            android:name=".View.LoadingActivity"
             android:screenOrientation="portrait"
             android:label="Mobile_Project" />
 

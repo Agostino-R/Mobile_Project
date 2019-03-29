@@ -4,6 +4,7 @@ import android.util.Log;
 
 import com.example.mobile_project.Model.AnimeInSearchList;
 import com.example.mobile_project.Model.Api_Search_Struct_Resp;
+import com.example.mobile_project.MyAnimeListAPI;
 import com.example.mobile_project.View.SearchActivity;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
